@@ -20,6 +20,13 @@
 		B90341FA18B558E20055AEAC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B90341DC18B558E20055AEAC /* UIKit.framework */; };
 		B903420218B558E20055AEAC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B903420018B558E20055AEAC /* InfoPlist.strings */; };
 		B903420418B558E20055AEAC /* iLListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B903420318B558E20055AEAC /* iLListTests.m */; };
+		B93D744E18C10D1C00AB12BF /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93D744D18C10D1C00AB12BF /* Firebase.framework */; };
+		B93D745018C10D4C00AB12BF /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B93D744F18C10D4C00AB12BF /* libicucore.dylib */; };
+		B93D745218C10D5800AB12BF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93D745118C10D5700AB12BF /* CFNetwork.framework */; };
+		B93D745418C10D6300AB12BF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93D745318C10D6300AB12BF /* Security.framework */; };
+		B93D745A18C10E5C00AB12BF /* ILLiLListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B93D745918C10E5C00AB12BF /* ILLiLListViewController.m */; };
+		B95CBBBE18C1102200A5AFF1 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B95CBBBD18C1102200A5AFF1 /* libc++.dylib */; };
+		B95CBBC018C1103900A5AFF1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95CBBBF18C1103900A5AFF1 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +57,14 @@
 		B90341FF18B558E20055AEAC /* iLListTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iLListTests-Info.plist"; sourceTree = "<group>"; };
 		B903420118B558E20055AEAC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B903420318B558E20055AEAC /* iLListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iLListTests.m; sourceTree = "<group>"; };
+		B93D744D18C10D1C00AB12BF /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		B93D744F18C10D4C00AB12BF /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		B93D745118C10D5700AB12BF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B93D745318C10D6300AB12BF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B93D745818C10E5C00AB12BF /* ILLiLListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLiLListViewController.h; sourceTree = "<group>"; };
+		B93D745918C10E5C00AB12BF /* ILLiLListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLiLListViewController.m; sourceTree = "<group>"; };
+		B95CBBBD18C1102200A5AFF1 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		B95CBBBF18C1103900A5AFF1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +72,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B95CBBC018C1103900A5AFF1 /* SystemConfiguration.framework in Frameworks */,
+				B95CBBBE18C1102200A5AFF1 /* libc++.dylib in Frameworks */,
+				B93D745418C10D6300AB12BF /* Security.framework in Frameworks */,
+				B93D745218C10D5800AB12BF /* CFNetwork.framework in Frameworks */,
+				B93D745018C10D4C00AB12BF /* libicucore.dylib in Frameworks */,
 				B90341DB18B558E20055AEAC /* CoreGraphics.framework in Frameworks */,
 				B90341DD18B558E20055AEAC /* UIKit.framework in Frameworks */,
 				B90341D918B558E20055AEAC /* Foundation.framework in Frameworks */,
+				B93D744E18C10D1C00AB12BF /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +119,12 @@
 		B90341D718B558E20055AEAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B95CBBBF18C1103900A5AFF1 /* SystemConfiguration.framework */,
+				B95CBBBD18C1102200A5AFF1 /* libc++.dylib */,
+				B93D745318C10D6300AB12BF /* Security.framework */,
+				B93D745118C10D5700AB12BF /* CFNetwork.framework */,
+				B93D744F18C10D4C00AB12BF /* libicucore.dylib */,
+				B93D744D18C10D1C00AB12BF /* Firebase.framework */,
 				B90341D818B558E20055AEAC /* Foundation.framework */,
 				B90341DA18B558E20055AEAC /* CoreGraphics.framework */,
 				B90341DC18B558E20055AEAC /* UIKit.framework */,
@@ -111,6 +138,8 @@
 			children = (
 				B90341E718B558E20055AEAC /* ILLAppDelegate.h */,
 				B90341E818B558E20055AEAC /* ILLAppDelegate.m */,
+				B93D745818C10E5C00AB12BF /* ILLiLListViewController.h */,
+				B93D745918C10E5C00AB12BF /* ILLiLListViewController.m */,
 				B90341EA18B558E20055AEAC /* Main.storyboard */,
 				B90341F018B558E20055AEAC /* Images.xcassets */,
 				B90341DF18B558E20055AEAC /* Supporting Files */,
@@ -245,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B93D745A18C10E5C00AB12BF /* ILLiLListViewController.m in Sources */,
 				B90341E918B558E20055AEAC /* ILLAppDelegate.m in Sources */,
 				B90341E518B558E20055AEAC /* main.m in Sources */,
 			);
@@ -373,9 +403,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/changchoi/Documents/Spring\\ 2014/ITP\\ 344/iLList/iLList",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iLList/iLList-Prefix.pch";
 				INFOPLIST_FILE = "iLList/iLList-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -386,9 +421,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/changchoi/Documents/Spring\\ 2014/ITP\\ 344/iLList/iLList",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iLList/iLList-Prefix.pch";
 				INFOPLIST_FILE = "iLList/iLList-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -455,6 +495,7 @@
 				B903420918B558E20055AEAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B903420A18B558E20055AEAC /* Build configuration list for PBXNativeTarget "iLListTests" */ = {
 			isa = XCConfigurationList;
@@ -463,6 +504,7 @@
 				B903420C18B558E20055AEAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
