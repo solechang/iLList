@@ -24,10 +24,32 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="zuZ-op-XBp"/>
+                    <connections>
+                        <segue destination="xEs-7U-9N7" kind="push" id="yXd-j3-LjT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FQR-HC-bPX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="480" y="-637"/>
+            <point key="canvasLocation" x="422" y="-616"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="9c6-vY-hJA">
+            <objects>
+                <viewController id="xEs-7U-9N7" customClass="ILLLoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OD9-z4-K9E"/>
+                        <viewControllerLayoutGuide type="bottom" id="B0P-1z-HDh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ggq-ym-byb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="t6g-Gv-gII"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bhc-Pp-gfk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="894" y="-616"/>
         </scene>
         <!--Navigation Controller - iLList-->
         <scene sceneID="n2h-oE-umn">

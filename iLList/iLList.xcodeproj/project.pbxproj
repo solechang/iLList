@@ -27,6 +27,9 @@
 		B93D745A18C10E5C00AB12BF /* ILLiLListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B93D745918C10E5C00AB12BF /* ILLiLListViewController.m */; };
 		B95CBBBE18C1102200A5AFF1 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B95CBBBD18C1102200A5AFF1 /* libc++.dylib */; };
 		B95CBBC018C1103900A5AFF1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95CBBBF18C1103900A5AFF1 /* SystemConfiguration.framework */; };
+		B95CBBC218C1136D00A5AFF1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95CBBC118C1136D00A5AFF1 /* Accounts.framework */; };
+		B95CBBC418C1137300A5AFF1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95CBBC318C1137300A5AFF1 /* Social.framework */; };
+		B95CBBC718C113C000A5AFF1 /* ILLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B95CBBC618C113C000A5AFF1 /* ILLLoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,10 @@
 		B93D745918C10E5C00AB12BF /* ILLiLListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLiLListViewController.m; sourceTree = "<group>"; };
 		B95CBBBD18C1102200A5AFF1 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		B95CBBBF18C1103900A5AFF1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B95CBBC118C1136D00A5AFF1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		B95CBBC318C1137300A5AFF1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		B95CBBC518C113C000A5AFF1 /* ILLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLLoginViewController.h; sourceTree = "<group>"; };
+		B95CBBC618C113C000A5AFF1 /* ILLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLLoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +79,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B95CBBC418C1137300A5AFF1 /* Social.framework in Frameworks */,
+				B95CBBC218C1136D00A5AFF1 /* Accounts.framework in Frameworks */,
 				B95CBBC018C1103900A5AFF1 /* SystemConfiguration.framework in Frameworks */,
 				B95CBBBE18C1102200A5AFF1 /* libc++.dylib in Frameworks */,
 				B93D745418C10D6300AB12BF /* Security.framework in Frameworks */,
@@ -119,6 +128,8 @@
 		B90341D718B558E20055AEAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B95CBBC318C1137300A5AFF1 /* Social.framework */,
+				B95CBBC118C1136D00A5AFF1 /* Accounts.framework */,
 				B95CBBBF18C1103900A5AFF1 /* SystemConfiguration.framework */,
 				B95CBBBD18C1102200A5AFF1 /* libc++.dylib */,
 				B93D745318C10D6300AB12BF /* Security.framework */,
@@ -140,6 +151,8 @@
 				B90341E818B558E20055AEAC /* ILLAppDelegate.m */,
 				B93D745818C10E5C00AB12BF /* ILLiLListViewController.h */,
 				B93D745918C10E5C00AB12BF /* ILLiLListViewController.m */,
+				B95CBBC518C113C000A5AFF1 /* ILLLoginViewController.h */,
+				B95CBBC618C113C000A5AFF1 /* ILLLoginViewController.m */,
 				B90341EA18B558E20055AEAC /* Main.storyboard */,
 				B90341F018B558E20055AEAC /* Images.xcassets */,
 				B90341DF18B558E20055AEAC /* Supporting Files */,
@@ -274,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B95CBBC718C113C000A5AFF1 /* ILLLoginViewController.m in Sources */,
 				B93D745A18C10E5C00AB12BF /* ILLiLListViewController.m in Sources */,
 				B90341E918B558E20055AEAC /* ILLAppDelegate.m in Sources */,
 				B90341E518B558E20055AEAC /* main.m in Sources */,
