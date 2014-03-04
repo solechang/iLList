@@ -7,9 +7,12 @@
 //
 
 #import "ILLiLListViewController.h"
+#import <Firebase/Firebase.h>
+#import <FirebaseSimpleLogin/FirebaseSimpleLogin.h>
+#import "ILLiLListModel.h"
 
 @interface ILLiLListViewController ()
-
+@property (strong, nonatomic)ILLiLListModel *model;
 @end
 
 @implementation ILLiLListViewController
@@ -26,6 +29,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.model = [ILLiLListModel sharedModel];
+    
+    [self.model.authClient checkAuthStatusWithBlock:^(NSError* error, FAUser* user) {
+        if (error != nil) {
+            // Oh no! There was an error performing the check
+        } else if (user == nil) {
+            // No user is logged in
+            //NSLog(@"Please login");
+            [self performSegueWithIdentifier:@"loginSegue" sender:self];
+        } else {
+            // There is a logged in user
+        }
+    }];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
