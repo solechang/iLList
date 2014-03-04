@@ -25,12 +25,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="zuZ-op-XBp"/>
                     <connections>
-                        <segue destination="xEs-7U-9N7" kind="push" id="yXd-j3-LjT"/>
+                        <segue destination="xEs-7U-9N7" kind="push" identifier="loginSegue" id="yXd-j3-LjT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FQR-HC-bPX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="422" y="-616"/>
+            <point key="canvasLocation" x="416" y="-637"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="9c6-vY-hJA">
@@ -49,7 +49,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bhc-Pp-gfk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="894" y="-616"/>
+            <point key="canvasLocation" x="862" y="-637"/>
         </scene>
         <!--Navigation Controller - iLList-->
         <scene sceneID="n2h-oE-umn">
@@ -84,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gg1-ra-pS7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-60" y="22"/>
+            <point key="canvasLocation" x="-60" y="67"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4HB-lJ-UiP">
@@ -123,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dK0-Rz-GXM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-60" y="699"/>
+            <point key="canvasLocation" x="-60" y="751"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

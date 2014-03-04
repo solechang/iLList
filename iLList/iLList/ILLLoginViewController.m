@@ -7,26 +7,29 @@
 //
 
 #import "ILLLoginViewController.h"
+#import <Firebase/Firebase.h>
+#import <FirebaseSimpleLogin/FirebaseSimpleLogin.h>
+#import "ILLiLListModel.h"
 
 @interface ILLLoginViewController ()
-
+@property (strong, nonatomic)ILLiLListModel *model;
 @end
 
 @implementation ILLLoginViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	
+    // adding in singleton
+    self.model = [ILLiLListModel sharedModel];
+    Firebase* authRef = [self.model.ref.root childByAppendingPath:@".info/authenticated"];
+    [authRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot* snap) {
+        BOOL isAuthenticated = [snap.value boolValue];
+        NSLog(@"%@", (isAuthenticated) ? @"True" :@"False");
+    }];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
