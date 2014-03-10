@@ -20,7 +20,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+	self.navigationItem.hidesBackButton = YES; // hide navigationitem (back button)
+    
     // adding in singleton
     self.model = [ILLiLListModel sharedModel];
     Firebase* authRef = [self.model.ref.root childByAppendingPath:@".info/authenticated"];
