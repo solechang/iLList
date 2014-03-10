@@ -13,8 +13,9 @@
 #define kOFFSET_FOR_KEYBOARD 80.0
 
 @interface ILLLoginViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *passWordTF;
+
 @property (weak, nonatomic) IBOutlet UITextField *userNameTF;
+@property (weak, nonatomic) IBOutlet UITextField *passWordTF;
 @property (strong, nonatomic)ILLiLListModel *model;
 @end
 
@@ -42,6 +43,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (IBAction)passWordExitTF:(id)sender {
+    [self.passWordTF resignFirstResponder];
+    
+}
+- (IBAction)loginPressed:(id)sender {
+    NSLog(@"2.)");
+}
+- (IBAction)newUserButton:(id)sender {
+    [self performSegueWithIdentifier:@"registerSegue" sender:self];
+}
+
+
+
+
+#pragma Auto Scrolling when clicked on Username/password textfield
 -(void)keyboardWillShow {
     // Animate the current view out of the way
     if (self.view.frame.origin.y >= 0)
@@ -115,6 +132,7 @@
                                              selector:@selector(keyboardWillHide)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated

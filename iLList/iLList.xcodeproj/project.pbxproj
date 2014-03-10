@@ -20,6 +20,7 @@
 		B90341FA18B558E20055AEAC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B90341DC18B558E20055AEAC /* UIKit.framework */; };
 		B903420218B558E20055AEAC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B903420018B558E20055AEAC /* InfoPlist.strings */; };
 		B903420418B558E20055AEAC /* iLListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B903420318B558E20055AEAC /* iLListTests.m */; };
+		B9057AE618CD65F8005D0C45 /* ILLRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9057AE518CD65F8005D0C45 /* ILLRegisterViewController.m */; };
 		B93D744E18C10D1C00AB12BF /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93D744D18C10D1C00AB12BF /* Firebase.framework */; };
 		B93D745018C10D4C00AB12BF /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B93D744F18C10D4C00AB12BF /* libicucore.dylib */; };
 		B93D745218C10D5800AB12BF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93D745118C10D5700AB12BF /* CFNetwork.framework */; };
@@ -62,6 +63,8 @@
 		B90341FF18B558E20055AEAC /* iLListTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iLListTests-Info.plist"; sourceTree = "<group>"; };
 		B903420118B558E20055AEAC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B903420318B558E20055AEAC /* iLListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iLListTests.m; sourceTree = "<group>"; };
+		B9057AE418CD65F8005D0C45 /* ILLRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLRegisterViewController.h; sourceTree = "<group>"; };
+		B9057AE518CD65F8005D0C45 /* ILLRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLRegisterViewController.m; sourceTree = "<group>"; };
 		B93D744D18C10D1C00AB12BF /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		B93D744F18C10D4C00AB12BF /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		B93D745118C10D5700AB12BF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -161,6 +164,8 @@
 				B93D745918C10E5C00AB12BF /* ILLiLListViewController.m */,
 				B95CBBC518C113C000A5AFF1 /* ILLLoginViewController.h */,
 				B95CBBC618C113C000A5AFF1 /* ILLLoginViewController.m */,
+				B9057AE418CD65F8005D0C45 /* ILLRegisterViewController.h */,
+				B9057AE518CD65F8005D0C45 /* ILLRegisterViewController.m */,
 				B90341EA18B558E20055AEAC /* Main.storyboard */,
 				B90341F018B558E20055AEAC /* Images.xcassets */,
 				B90341DF18B558E20055AEAC /* Supporting Files */,
@@ -305,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B95CBBC718C113C000A5AFF1 /* ILLLoginViewController.m in Sources */,
+				B9057AE618CD65F8005D0C45 /* ILLRegisterViewController.m in Sources */,
 				B93D745A18C10E5C00AB12BF /* ILLiLListViewController.m in Sources */,
 				B90341E918B558E20055AEAC /* ILLAppDelegate.m in Sources */,
 				B90341E518B558E20055AEAC /* main.m in Sources */,
