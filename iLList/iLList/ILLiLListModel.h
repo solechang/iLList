@@ -18,8 +18,7 @@
 
 -(void)createUserWithEmail:(NSString*)email password:(NSString*)pass   andCompletionBlock:(void (^)(NSError* error, FAUser* user))block;
 
--(void) checkAuthStatusWithBlock:(void (^)(NSError *error, FAUser *user))block;
-
+-(void) checkAuthStatusWithBlock:(void (^)(NSError *, FAUser *))block;
 
 
 @end

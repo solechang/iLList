@@ -16,7 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameTF;
 @property (weak, nonatomic) IBOutlet UITextField *passWordTF;
-@property (strong, nonatomic)ILLiLListModel *model;
+
 @end
 
 @implementation ILLLoginViewController
@@ -27,13 +27,6 @@
 	self.navigationItem.hidesBackButton = YES; // hide navigationitem (back button)
     
     // adding in singleton
-    self.model = [ILLiLListModel sharedModel];
-//    Firebase* authRef = [self.model.ref.root childByAppendingPath:@".info/authenticated"];
-//    [authRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot* snap) {
-//        BOOL isAuthenticated = [snap.value boolValue];
-//        NSLog(@"%@", (isAuthenticated) ? @"True" :@"False");
-//    }];
-    
     
 }
 
@@ -49,13 +42,13 @@
     
 }
 - (IBAction)loginPressed:(id)sender {
+    
+    
     NSLog(@"2.)");
 }
 - (IBAction)newUserButton:(id)sender {
     [self performSegueWithIdentifier:@"registerSegue" sender:self];
 }
-
-
 
 
 #pragma Auto Scrolling when clicked on Username/password textfield

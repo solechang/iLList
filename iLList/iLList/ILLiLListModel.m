@@ -35,25 +35,15 @@ FirebaseSimpleLogin *authClient;
     return self;
 }
 
+// Create user with email
 - (void)createUserWithEmail:(NSString *)email password:(NSString *)pass andCompletionBlock:(void (^)(NSError *, FAUser *))block {
-    [authClient createUserWithEmail:email password:pass andCompletionBlock:block];
-
     
+    [authClient createUserWithEmail:email password:pass andCompletionBlock:block];
 }
-// Same for checkAuthSStatuswWithBlock
 
-
-
-//-(void) checkAuthStatusWithBlock:(void (^)(NSError *)error using:(FAUser *)user) {
-//    if (error != nil) {
-//        // Oh no! There was an error performing the check
-//    } else if (user == nil) {
-//        // No user is logged in
-//        //NSLog(@"Please login");
-//        [self performSegueWithIdentifier:@"loginSegue" sender:self];
-//    } else {
-//        // There is a logged in user
-//    }
-//}
+// checking if user is logged in
+- (void) checkAuthStatusWithBlock:(void (^)(NSError *, FAUser *))block  {
+    [authClient checkAuthStatusWithBlock:block];
+}
 
 @end

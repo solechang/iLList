@@ -29,19 +29,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self performSegueWithIdentifier:@"loginSegue" sender:self];
-//    
-//    [[ILLiLListModel sharedModel] checkAuthStatusWithBlock:^(NSError* error, FAUser* user) {
-//        if (error != nil) {
-//            // Oh no! There was an error performing the check
-//        } else if (user == nil) {
-//            // No user is logged in
-//            //NSLog(@"Please login");
-//            [self performSegueWithIdentifier:@"loginSegue" sender:self];
-//        } else {
-//            // There is a logged in user
-//        }
-//    }];
+//    [self performSegueWithIdentifier:@"loginSegue" sender:self];
+    
+    [[ILLiLListModel sharedModel] checkAuthStatusWithBlock:^(NSError* error, FAUser* user) {
+        if (error != nil) {
+            // Oh no! There was an error performing the check
+        } else if (user == nil) {
+            // No user is logged in
+            //NSLog(@"Please login");
+            [self performSegueWithIdentifier:@"loginSegue" sender:self];
+        } else {
+            // There is a logged in user
+        }
+    }];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -60,14 +60,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return 0;
 }
