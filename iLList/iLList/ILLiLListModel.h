@@ -14,9 +14,12 @@
 
 +(instancetype) sharedModel;
 
-// Creating Firebase user on singleton to check if user is logged in throughout the application
-@property (nonatomic, strong) Firebase *ref;
-@property (nonatomic, strong) FirebaseSimpleLogin *authClient;
+// Creating Firebase user on a singleton to check if user is logged in throughout the application
+
+-(void)createUserWithEmail:(NSString*)email password:(NSString*)pass   andCompletionBlock:(void (^)(NSError* error, FAUser* user))block;
+
+-(void) checkAuthStatusWithBlock:(void (^)(NSError *error, FAUser *user))block;
+
 
 
 @end

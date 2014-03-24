@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailTF;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTF;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
-@property (strong, nonatomic)ILLiLListModel *model;
+
 @end
 
 @implementation ILLRegisterViewController
@@ -33,9 +33,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.model.ref = [[Firebase alloc] initWithUrl:@"https://illist.firebaseIO-demo.com/users"];
     
-    self.model.authClient = [[FirebaseSimpleLogin alloc] initWithRef:self.model.ref];
+    //This might change the singleton's model ref to be in users
+    //Firebase* childRef = [[ILLiLListModel sharedModel] childByAppendingPath:@"users"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,15 +62,30 @@
 #pragma Creating id
 - (IBAction)createidButton:(id)sender {
     
-    [self.model.authClient createUserWithEmail:self.emailTF.text password:self.passwordTF.text
-                            andCompletionBlock:^(NSError* error, FAUser* user) {
-                                
+    NSLog(@"Email: %@", self.emailTF.text);
+    
+    // Registering account
+    [[ILLiLListModel sharedModel] createUserWithEmail:self.emailTF.text password:self.passwordTF.text andCompletionBlock:^(NSError* error, FAUser* user) {
                                 if (error != nil) {
                                     // There was an error creating the account
-                                    NSLog(@"4.)");
+                                    [[[UIAlertView alloc] initWithTitle:@"Error"
+                                                                message:@"Your email, username, or password is invalid. Please try again."
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"ok"
+                                                      otherButtonTitles:nil] show];
+
                                 } else {
                                     // We created a new user account
                                     NSLog(@"Account created!");
+                                    
+                                    [[[UIAlertView alloc] initWithTitle:@"Account Created!"
+                                                                message:@"TYou have successfully created an account! Please login."
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"ok"
+                                                      otherButtonTitles:nil] show];
+                                    
+                                    [self.navigationController popViewControllerAnimated:YES];
+                                    
                                 }
                             }];
     

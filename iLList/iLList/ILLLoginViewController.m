@@ -28,11 +28,11 @@
     
     // adding in singleton
     self.model = [ILLiLListModel sharedModel];
-    Firebase* authRef = [self.model.ref.root childByAppendingPath:@".info/authenticated"];
-    [authRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot* snap) {
-        BOOL isAuthenticated = [snap.value boolValue];
-        NSLog(@"%@", (isAuthenticated) ? @"True" :@"False");
-    }];
+//    Firebase* authRef = [self.model.ref.root childByAppendingPath:@".info/authenticated"];
+//    [authRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot* snap) {
+//        BOOL isAuthenticated = [snap.value boolValue];
+//        NSLog(@"%@", (isAuthenticated) ? @"True" :@"False");
+//    }];
     
     
 }
