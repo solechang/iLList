@@ -182,7 +182,7 @@
                                 <rect key="frame" x="129" y="136" width="152" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                 <connections>
                                     <action selector="emailTFExit:" destination="Wbw-h3-lyU" eventType="editingDidEndOnExit" id="cOu-nI-BSU"/>
                                 </connections>
@@ -200,7 +200,7 @@
                                 <rect key="frame" x="129" y="230" width="152" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="passwordTFExit:" destination="Wbw-h3-lyU" eventType="editingDidEndOnExit" id="eNB-YC-egf"/>
                                 </connections>
