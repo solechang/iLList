@@ -29,7 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self performSegueWithIdentifier:@"loginSegue" sender:self];
     
     [[ILLiLListModel sharedModel] checkAuthStatusWithBlock:^(NSError* error, FAUser* user) {
         if (error != nil) {
