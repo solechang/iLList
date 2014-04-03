@@ -9,6 +9,9 @@
 #import "ILLYoutubeViewController.h"
 #import "JSONModelLib.h"
 #import "VideoModel.h"
+#import <Firebase/Firebase.h>
+#import <FirebaseSimpleLogin/FirebaseSimpleLogin.h>
+#import "ILLiLListModel.h"
 
 @interface ILLYoutubeViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -23,6 +26,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[ILLiLListModel sharedModel] checkAuthStatusWithBlock:^(NSError* error, FAUser* user) {
+        if (error != nil) {
+            // Oh no! There was an error performing the check
+        } else if (user == nil) {
+            // No user is logged in
+            //NSLog(@"Please login");
+            [self performSegueWithIdentifier:@"loginSegue" sender:self];
+        } else {
+            // There is a logged in user
+        }
+    }];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
