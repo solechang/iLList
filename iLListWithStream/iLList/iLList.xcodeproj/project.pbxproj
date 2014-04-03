@@ -22,7 +22,6 @@
 		56B734B118E0CE4D00C48A90 /* VideoLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B734AD18E0CE4D00C48A90 /* VideoLink.m */; };
 		56B734B218E0CE4D00C48A90 /* VideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B734AF18E0CE4D00C48A90 /* VideoModel.m */; };
 		56B734C918E0CEA800C48A90 /* ILLYoutubeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B734C818E0CEA800C48A90 /* ILLYoutubeViewController.m */; };
-		56B734CD18E0CF8800C48A90 /* FirebaseSimpleLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9EF7B4818C51FC400420F45 /* FirebaseSimpleLogin.framework */; };
 		B90341D918B558E20055AEAC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B90341D818B558E20055AEAC /* Foundation.framework */; };
 		B90341DB18B558E20055AEAC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B90341DA18B558E20055AEAC /* CoreGraphics.framework */; };
 		B90341DD18B558E20055AEAC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B90341DC18B558E20055AEAC /* UIKit.framework */; };
@@ -40,12 +39,13 @@
 		B93D745018C10D4C00AB12BF /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B93D744F18C10D4C00AB12BF /* libicucore.dylib */; };
 		B93D745218C10D5800AB12BF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93D745118C10D5700AB12BF /* CFNetwork.framework */; };
 		B93D745418C10D6300AB12BF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93D745318C10D6300AB12BF /* Security.framework */; };
+		B956D2E518EDFC0B0006B52F /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B956D2E418EDFC0B0006B52F /* Firebase.framework */; };
+		B956D2E718EDFD560006B52F /* FirebaseSimpleLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B956D2E618EDFD560006B52F /* FirebaseSimpleLogin.framework */; };
 		B95CBBBE18C1102200A5AFF1 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B95CBBBD18C1102200A5AFF1 /* libc++.dylib */; };
 		B95CBBC018C1103900A5AFF1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95CBBBF18C1103900A5AFF1 /* SystemConfiguration.framework */; };
 		B95CBBC218C1136D00A5AFF1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95CBBC118C1136D00A5AFF1 /* Accounts.framework */; };
 		B95CBBC418C1137300A5AFF1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95CBBC318C1137300A5AFF1 /* Social.framework */; };
 		B95CBBC718C113C000A5AFF1 /* ILLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B95CBBC618C113C000A5AFF1 /* ILLLoginViewController.m */; };
-		B9A9F4BA18ECA64F001E69CE /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93D744D18C10D1C00AB12BF /* Firebase.framework */; };
 		B9A9F4BC18ECADFF001E69CE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A9F4BB18ECADFF001E69CE /* FacebookSDK.framework */; };
 		B9EF7B4D18C5298200420F45 /* ILLiLListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9EF7B4C18C5298200420F45 /* ILLiLListModel.m */; };
 /* End PBXBuildFile section */
@@ -112,10 +112,11 @@
 		B903420318B558E20055AEAC /* iLListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iLListTests.m; sourceTree = "<group>"; };
 		B9057AE418CD65F8005D0C45 /* ILLRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLRegisterViewController.h; sourceTree = "<group>"; };
 		B9057AE518CD65F8005D0C45 /* ILLRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLRegisterViewController.m; sourceTree = "<group>"; };
-		B93D744D18C10D1C00AB12BF /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		B93D744F18C10D4C00AB12BF /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		B93D745118C10D5700AB12BF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B93D745318C10D6300AB12BF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B956D2E418EDFC0B0006B52F /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		B956D2E618EDFD560006B52F /* FirebaseSimpleLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseSimpleLogin.framework; sourceTree = "<group>"; };
 		B95CBBBD18C1102200A5AFF1 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		B95CBBBF18C1103900A5AFF1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B95CBBC118C1136D00A5AFF1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -123,7 +124,6 @@
 		B95CBBC518C113C000A5AFF1 /* ILLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLLoginViewController.h; sourceTree = "<group>"; };
 		B95CBBC618C113C000A5AFF1 /* ILLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLLoginViewController.m; sourceTree = "<group>"; };
 		B9A9F4BB18ECADFF001E69CE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
-		B9EF7B4818C51FC400420F45 /* FirebaseSimpleLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseSimpleLogin.framework; sourceTree = "<group>"; };
 		B9EF7B4B18C5298200420F45 /* ILLiLListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLiLListModel.h; sourceTree = "<group>"; };
 		B9EF7B4C18C5298200420F45 /* ILLiLListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLiLListModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,14 +133,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9A9F4BA18ECA64F001E69CE /* Firebase.framework in Frameworks */,
-				56B734CD18E0CF8800C48A90 /* FirebaseSimpleLogin.framework in Frameworks */,
 				B95CBBC418C1137300A5AFF1 /* Social.framework in Frameworks */,
 				B95CBBC218C1136D00A5AFF1 /* Accounts.framework in Frameworks */,
+				B956D2E718EDFD560006B52F /* FirebaseSimpleLogin.framework in Frameworks */,
 				B95CBBC018C1103900A5AFF1 /* SystemConfiguration.framework in Frameworks */,
 				B95CBBBE18C1102200A5AFF1 /* libc++.dylib in Frameworks */,
 				B93D745418C10D6300AB12BF /* Security.framework in Frameworks */,
 				B93D745218C10D5800AB12BF /* CFNetwork.framework in Frameworks */,
+				B956D2E518EDFC0B0006B52F /* Firebase.framework in Frameworks */,
 				B9A9F4BC18ECADFF001E69CE /* FacebookSDK.framework in Frameworks */,
 				B93D745018C10D4C00AB12BF /* libicucore.dylib in Frameworks */,
 				B90341DB18B558E20055AEAC /* CoreGraphics.framework in Frameworks */,
@@ -261,9 +261,10 @@
 		B90341D718B558E20055AEAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B956D2E618EDFD560006B52F /* FirebaseSimpleLogin.framework */,
+				B956D2E418EDFC0B0006B52F /* Firebase.framework */,
 				B9A9F4BB18ECADFF001E69CE /* FacebookSDK.framework */,
 				56B734CA18E0CEFB00C48A90 /* Firebase */,
-				B9EF7B4818C51FC400420F45 /* FirebaseSimpleLogin.framework */,
 				B95CBBC318C1137300A5AFF1 /* Social.framework */,
 				B95CBBC118C1136D00A5AFF1 /* Accounts.framework */,
 				B95CBBBF18C1103900A5AFF1 /* SystemConfiguration.framework */,
@@ -271,7 +272,6 @@
 				B93D745318C10D6300AB12BF /* Security.framework */,
 				B93D745118C10D5700AB12BF /* CFNetwork.framework */,
 				B93D744F18C10D4C00AB12BF /* libicucore.dylib */,
-				B93D744D18C10D1C00AB12BF /* Firebase.framework */,
 				B90341D818B558E20055AEAC /* Foundation.framework */,
 				B90341DA18B558E20055AEAC /* CoreGraphics.framework */,
 				B90341DC18B558E20055AEAC /* UIKit.framework */,
@@ -283,8 +283,6 @@
 		B90341DE18B558E20055AEAC /* iLList */ = {
 			isa = PBXGroup;
 			children = (
-				56B734C718E0CEA800C48A90 /* ILLYoutubeViewController.h */,
-				56B734C818E0CEA800C48A90 /* ILLYoutubeViewController.m */,
 				B9EF7B4A18C528BE00420F45 /* Model */,
 				B90341E718B558E20055AEAC /* ILLAppDelegate.h */,
 				B90341E818B558E20055AEAC /* ILLAppDelegate.m */,
@@ -292,6 +290,8 @@
 				B95CBBC618C113C000A5AFF1 /* ILLLoginViewController.m */,
 				B9057AE418CD65F8005D0C45 /* ILLRegisterViewController.h */,
 				B9057AE518CD65F8005D0C45 /* ILLRegisterViewController.m */,
+				56B734C718E0CEA800C48A90 /* ILLYoutubeViewController.h */,
+				56B734C818E0CEA800C48A90 /* ILLYoutubeViewController.m */,
 				B90341EA18B558E20055AEAC /* Main.storyboard */,
 				B90341F018B558E20055AEAC /* Images.xcassets */,
 				B90341DF18B558E20055AEAC /* Supporting Files */,

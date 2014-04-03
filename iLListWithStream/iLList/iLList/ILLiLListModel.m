@@ -46,4 +46,16 @@ FirebaseSimpleLogin *authClient;
     [authClient checkAuthStatusWithBlock:block];
 }
 
+- (void) logInToFacebookWithAppWithID: (NSString *)appId permissions:(NSString *)email
+                             audience:ACFacebookAudienceOnlyMe withCompletionBlock:(void (^)(NSError *, FAUser *))block {
+    
+    
+    [authClient loginToFacebookAppWithId:appId permissions:nil
+                                audience:ACFacebookAudienceOnlyMe
+                     withCompletionBlock:block];
+
+
+}
+
+
 @end

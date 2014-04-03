@@ -50,6 +50,12 @@
 
 
 /**
+ * @return A uid for this user. It is unique across all auth providers.
+ */
+@property (nonatomic, strong) NSString* uid;
+
+
+/**
  * @return The provider that authenticated this user
  */
 @property (nonatomic) FAProvider provider;

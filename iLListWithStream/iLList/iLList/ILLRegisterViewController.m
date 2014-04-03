@@ -79,7 +79,7 @@
                                     NSLog(@"Account created!");
                                     
                                     [[[UIAlertView alloc] initWithTitle:@"Account Created!"
-                                                                message:@"TYou have successfully created an account! Please login."
+                                                                message:@"You have successfully created an account! Please login."
                                                                delegate:nil
                                                       cancelButtonTitle:@"ok"
                                                       otherButtonTitles:nil] show];

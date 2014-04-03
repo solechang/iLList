@@ -10,6 +10,8 @@
 #import <Firebase/Firebase.h>
 #import <FirebaseSimpleLogin/FirebaseSimpleLogin.h>
 #import "ILLiLListModel.h"
+#import <FacebookSDK/FacebookSDK.h>
+
 #define kOFFSET_FOR_KEYBOARD 80.0
 
 @interface ILLLoginViewController ()
@@ -44,10 +46,27 @@
 - (IBAction)loginPressed:(id)sender {
     
     
-    NSLog(@"2.)");
+    NSLog(@"2.)Nothing implemented");
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)newUserButton:(id)sender {
     [self performSegueWithIdentifier:@"registerSegue" sender:self];
+}
+- (IBAction)fbLoginButton:(id)sender {
+    
+    [[ILLiLListModel sharedModel] logInToFacebookWithAppWithID:@"211472342396196"
+                                                   permissions:nil
+                                                      audience:ACFacebookAudienceOnlyMe withCompletionBlock:^(NSError *error, FAUser *user){
+        if (error != nil) {
+            // There was an error logging in
+            NSLog(@"%@", error);
+        } else {
+            // We have a logged in facebook user
+             NSLog(@"5.)YAYA");
+             [self.navigationController popViewControllerAnimated:YES];
+        }
+    }];
+  
 }
 
 
