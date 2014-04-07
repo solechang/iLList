@@ -29,7 +29,7 @@ FirebaseSimpleLogin *authClient;
     self = [super init];
     if (self) {
         // Initializing the Firebase account throughout the application
-        ref = [[Firebase alloc] initWithUrl:@"https://illist.firebaseIO-demo.com"];
+        ref = [[Firebase alloc] initWithUrl:@"https://illist.firebaseIO.com"];
         authClient = [[FirebaseSimpleLogin alloc] initWithRef:ref];
     }
     return self;
@@ -47,7 +47,8 @@ FirebaseSimpleLogin *authClient;
 }
 
 - (void) logInToFacebookWithAppWithID: (NSString *)appId permissions:(NSString *)email
-                             audience:ACFacebookAudienceOnlyMe withCompletionBlock:(void (^)(NSError *, FAUser *))block {
+                             audience:ACFacebookAudienceOnlyMe
+                  withCompletionBlock:(void (^)(NSError *, FAUser *))block {
     
     
     [authClient loginToFacebookAppWithId:appId permissions:nil
@@ -56,6 +57,8 @@ FirebaseSimpleLogin *authClient;
 
 
 }
-
+-(void) logout {
+    [authClient logout];
+}
 
 @end

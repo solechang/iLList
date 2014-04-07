@@ -100,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bhc-Pp-gfk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="880" y="-637"/>
+            <point key="canvasLocation" x="881" y="-637"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="Geq-Yc-G6x">
@@ -331,7 +331,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="F7e-yH-oPs"/>
+                    <navigationItem key="navigationItem" id="F7e-yH-oPs">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="1dS-2r-SY2">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ETb-ZJ-iIM">
+                                <rect key="frame" x="233" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="logout">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutButton:" destination="MsU-CO-2bj" eventType="touchUpInside" id="Xaz-Ln-zK0"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="iQY-ib-0f6" id="GLI-mA-Lub"/>
                         <outlet property="tableView" destination="N5t-OR-W0P" id="50n-a0-Qof"/>

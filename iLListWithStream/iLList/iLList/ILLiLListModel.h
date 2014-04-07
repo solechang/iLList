@@ -22,4 +22,6 @@
 
 -(void) logInToFacebookWithAppWithID: (NSString *)appId permissions:(NSString *)email audience:ACFacebookAudienceOnlyMe withCompletionBlock:(void (^)(NSError *, FAUser *))block;
 
+-(void) logout;
+
 @end

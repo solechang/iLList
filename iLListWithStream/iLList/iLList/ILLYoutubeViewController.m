@@ -46,6 +46,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)logoutButton:(id)sender {
+    [[ILLiLListModel sharedModel] logout];
+    [self performSegueWithIdentifier:@"loginSegue" sender:self];
+}
 
 #pragma mark - Search Bar
 

@@ -62,8 +62,11 @@
             NSLog(@"%@", error);
         } else {
             // We have a logged in facebook user
-             NSLog(@"5.)YAYA");
-             [self.navigationController popViewControllerAnimated:YES];
+             NSLog(@"5.)%@", user.uid);
+            Firebase* userRef = [[Firebase alloc] initWithUrl:@"https://illist.firebaseio.com/users"];
+            [[userRef childByAppendingPath:@"user_id" ] setValue:user.uid];
+            
+            [self.navigationController popViewControllerAnimated:YES];
         }
     }];
   
