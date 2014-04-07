@@ -93,6 +93,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="t6g-Gv-gII"/>
                     <connections>
+                        <outlet property="faceBookLoginButton" destination="lHv-F6-gzz" id="eI1-ky-U0P"/>
                         <outlet property="passWordTF" destination="QkV-0J-3S8" id="MjA-36-mVC"/>
                         <outlet property="userNameTF" destination="ney-Ed-q0v" id="Zc9-aU-FsS"/>
                         <segue destination="Wbw-h3-lyU" kind="push" identifier="registerSegue" id="1Gc-JT-imB"/>

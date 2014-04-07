@@ -18,6 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameTF;
 @property (weak, nonatomic) IBOutlet UITextField *passWordTF;
+@property (weak, nonatomic) IBOutlet UIButton *faceBookLoginButton;
 
 @end
 
@@ -45,7 +46,6 @@
 }
 - (IBAction)loginPressed:(id)sender {
     
-    
     NSLog(@"2.)Nothing implemented");
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -53,6 +53,8 @@
     [self performSegueWithIdentifier:@"registerSegue" sender:self];
 }
 - (IBAction)fbLoginButton:(id)sender {
+    
+    [self.faceBookLoginButton setEnabled:NO];
     
     [[ILLiLListModel sharedModel] logInToFacebookWithAppWithID:@"211472342396196"
                                                    permissions:nil
@@ -62,16 +64,36 @@
             NSLog(@"%@", error);
         } else {
             // We have a logged in facebook user
-             NSLog(@"5.)%@", user.uid);
+             NSLog(@"5.)%@", user.userId);
+            
             Firebase* userRef = [[Firebase alloc] initWithUrl:@"https://illist.firebaseio.com/users"];
-            [[userRef childByAppendingPath:@"user_id" ] setValue:user.uid];
+            
+            [[userRef childByAppendingPath:user.userId]  setValue:@""];
+            
+            NSString *linkUsers = @"https://illist.firebaseio.com/users/";
+            linkUsers = [linkUsers stringByAppendingString:user.userId];
+            userRef = [[Firebase alloc] initWithUrl:linkUsers];
+            [[userRef childByAppendingPath:@"user_id" ] setValue:user.userId];
+            [[userRef childByAppendingPath:@"illists" ] setValue:@""];
+            
+            Firebase* listRef = [[Firebase alloc] initWithUrl:@"https://illist.firebaseio.com/users"];
+            Firebase* newPushRef = [listRef childByAutoId];
+            [newPushRef setValue:@{@"user_id": @"wilma", @"text": @"Hello"}];
+//            [newPushRef setValue:@{@"chang": @"choi"}];
             
             [self.navigationController popViewControllerAnimated:YES];
         }
     }];
+    
+
+    [self performSelector:@selector(turnOffTime:) withObject:nil afterDelay:1.5];
   
 }
+// Facebook
+- (void)turnOffTime:(NSTimer*)timer {
+    [self.faceBookLoginButton setEnabled:YES];
 
+}
 
 #pragma Auto Scrolling when clicked on Username/password textfield
 -(void)keyboardWillShow {
