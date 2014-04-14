@@ -27,28 +27,26 @@
 {
     [super viewDidLoad];
     
+
+	// Do any additional setup after loading the view, typically from a nib.
+}
+- (void) viewWillAppear:(BOOL)animated {
     [[ILLiLListModel sharedModel] checkAuthStatusWithBlock:^(NSError* error, FAUser* user) {
         if (error != nil) {
             // Oh no! There was an error performing the check
         } else if (user == nil) {
             // No user is logged in
-            //NSLog(@"Please login");
             [self performSegueWithIdentifier:@"loginSegue" sender:self];
         } else {
             // There is a logged in user
         }
     }];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-- (IBAction)logoutButton:(id)sender {
-    [[ILLiLListModel sharedModel] logout];
-    [self performSegueWithIdentifier:@"loginSegue" sender:self];
 }
 
 #pragma mark - Search Bar
@@ -141,5 +139,7 @@
 {
     [self loadWebViewWithVideo:self.results[indexPath.row]];
 }
+
+
 
 @end

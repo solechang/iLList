@@ -12,6 +12,8 @@
 
 @interface ILLiLListModel : NSObject
 
+@property(weak,nonatomic) NSString* userID;
+
 +(instancetype) sharedModel;
 
 // Creating Firebase user on a singleton to check if user is logged in throughout the application
@@ -23,5 +25,7 @@
 -(void) logInToFacebookWithAppWithID: (NSString *)appId permissions:(NSString *)email audience:ACFacebookAudienceOnlyMe withCompletionBlock:(void (^)(NSError *, FAUser *))block;
 
 -(void) logout;
+
+
 
 @end
