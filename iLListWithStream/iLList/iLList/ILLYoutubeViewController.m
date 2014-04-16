@@ -30,27 +30,7 @@
 
 	// Do any additional setup after loading the view, typically from a nib.
 }
-- (void) viewWillAppear:(BOOL)animated {
-    [[ILLiLListModel sharedModel] checkAuthStatusWithBlock:^(NSError* error, FAUser* user) {
-        if (error != nil) {
-            // Oh no! There was an error performing the check
-        } else if (user == nil) {
-            // No user is logged in
-            [self performSegueWithIdentifier:@"loginSegue" sender:self];
-        } else {
-            // There is a logged in user
-            [[ILLiLListModel sharedModel] setUserID:user.userId];
-        }
-    }];
-}
-- (IBAction)addiLListButton:(id)sender {
-    
-    [self performSegueWithIdentifier:@"addIllist" sender:self];
-}
-- (IBAction)viewiLListButton:(id)sender {
-    [self performSegueWithIdentifier:@"viewIllists" sender:self];
-    
-}
+
 
 - (void)didReceiveMemoryWarning
 {

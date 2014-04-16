@@ -34,6 +34,34 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+}
+- (void) viewWillAppear:(BOOL)animated {
+    NSLog(@"0.1.)");
+
+    
+    [[ILLiLListModel sharedModel] checkAuthStatusWithBlock:^(NSError* error, FAUser* user) {
+        NSLog(@"4.)");
+        if (error != nil) {
+            // Oh no! There was an error performing the check
+            NSLog(@"0.2.)");
+        } else if (user == nil) {
+            // No user is logged in
+            NSLog(@"0.3.)");
+            [self performSegueWithIdentifier:@"loginSegue" sender:self];
+        } else {
+            // There is a logged in user
+            [[ILLiLListModel sharedModel] setUserID:user.userId];
+            NSLog(@"0.5.)");
+        }
+    }];
+    NSLog(@"0.)");
+}
+- (IBAction)createIllist:(id)sender {
+    [self performSegueWithIdentifier:@"createSegue" sender:self];
+}
+- (IBAction)searchSongs:(id)sender {
+    [self performSegueWithIdentifier:@"searchSegue" sender:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,13 +83,13 @@
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
+    
     // SET THIS********$$$$$$$$$$
-    return 5;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"1.)");
     
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"illistnames" forIndexPath:indexPath];
@@ -71,22 +99,23 @@
     //create string to reference user's individual illists
     NSString *linkUsers = @"https://illist.firebaseio.com/users/";
     NSString *linkUserID = [[ILLiLListModel sharedModel] userID];
-    
+
     linkUsers = [linkUsers stringByAppendingString:linkUserID];
-    
+
     //create reference to user's illists table
     NSString* playlistsRefURL = [[NSString alloc] initWithFormat:@"https://illist.firebaseio.com/playlists/"];
     Firebase* userRef = [[Firebase alloc] initWithUrl:linkUsers];
+    
     [userRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSDictionary *userData = snapshot.value;
         NSLog(@"3.)%@", snapshot.value);
-//        playlists = userData[@"illist"];
-//        NSString *tmpName = [playlists objectAtIndex:indexPath.row];
-//        [playlistsRefURL stringByAppendingString:tmpName];
-//        Firebase* playlistsRef = [[Firebase alloc] initWithUrl:playlistsRefURL];
+        playlists = userData[@"illist"];
+        NSString *tmpName = [playlists objectAtIndex:indexPath.row];
+        [playlistsRefURL stringByAppendingString:tmpName];
+        Firebase* playlistsRef = [[Firebase alloc] initWithUrl:playlistsRefURL];
 //        cell.textLabel.text =
-        
-        
+
+
     }];
     
     return cell;
