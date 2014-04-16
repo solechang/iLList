@@ -89,6 +89,8 @@
 		B95CBBC418C1137300A5AFF1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95CBBC318C1137300A5AFF1 /* Social.framework */; };
 		B95CBBC718C113C000A5AFF1 /* ILLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B95CBBC618C113C000A5AFF1 /* ILLLoginViewController.m */; };
 		B9A9F4BC18ECADFF001E69CE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A9F4BB18ECADFF001E69CE /* FacebookSDK.framework */; };
+		B9C0588518FC5A6400866B8B /* ILLAddiLListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C0588418FC5A6400866B8B /* ILLAddiLListViewController.m */; };
+		B9C0588B18FC760F00866B8B /* ILLListOfIllistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C0588A18FC760F00866B8B /* ILLListOfIllistsViewController.m */; };
 		B9EF7B4D18C5298200420F45 /* ILLiLListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9EF7B4C18C5298200420F45 /* ILLiLListModel.m */; };
 /* End PBXBuildFile section */
 
@@ -209,6 +211,10 @@
 		B95CBBC518C113C000A5AFF1 /* ILLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLLoginViewController.h; sourceTree = "<group>"; };
 		B95CBBC618C113C000A5AFF1 /* ILLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLLoginViewController.m; sourceTree = "<group>"; };
 		B9A9F4BB18ECADFF001E69CE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		B9C0588318FC5A6400866B8B /* ILLAddiLListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLAddiLListViewController.h; sourceTree = "<group>"; };
+		B9C0588418FC5A6400866B8B /* ILLAddiLListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLAddiLListViewController.m; sourceTree = "<group>"; };
+		B9C0588918FC760F00866B8B /* ILLListOfIllistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLListOfIllistsViewController.h; sourceTree = "<group>"; };
+		B9C0588A18FC760F00866B8B /* ILLListOfIllistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLListOfIllistsViewController.m; sourceTree = "<group>"; };
 		B9EF7B4B18C5298200420F45 /* ILLiLListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLiLListModel.h; sourceTree = "<group>"; };
 		B9EF7B4C18C5298200420F45 /* ILLiLListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLiLListModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -420,6 +426,10 @@
 				B9EF7B4A18C528BE00420F45 /* Model */,
 				B90341E718B558E20055AEAC /* ILLAppDelegate.h */,
 				B90341E818B558E20055AEAC /* ILLAppDelegate.m */,
+				B9C0588318FC5A6400866B8B /* ILLAddiLListViewController.h */,
+				B9C0588418FC5A6400866B8B /* ILLAddiLListViewController.m */,
+				B9C0588918FC760F00866B8B /* ILLListOfIllistsViewController.h */,
+				B9C0588A18FC760F00866B8B /* ILLListOfIllistsViewController.m */,
 				B95CBBC518C113C000A5AFF1 /* ILLLoginViewController.h */,
 				B95CBBC618C113C000A5AFF1 /* ILLLoginViewController.m */,
 				B9057AE418CD65F8005D0C45 /* ILLRegisterViewController.h */,
@@ -624,6 +634,7 @@
 				56B7349F18E0CE2700C48A90 /* JSONModel.m in Sources */,
 				56B734B018E0CE4D00C48A90 /* MediaThumbnail.m in Sources */,
 				B9057AE618CD65F8005D0C45 /* ILLRegisterViewController.m in Sources */,
+				B9C0588B18FC760F00866B8B /* ILLListOfIllistsViewController.m in Sources */,
 				56B734A018E0CE2700C48A90 /* JSONModelArray.m in Sources */,
 				56B734A318E0CE2700C48A90 /* NSArray+JSONModel.m in Sources */,
 				56B734B218E0CE4D00C48A90 /* VideoModel.m in Sources */,
@@ -636,6 +647,7 @@
 				56B734A118E0CE2700C48A90 /* JSONModelClassProperty.m in Sources */,
 				B90341E518B558E20055AEAC /* main.m in Sources */,
 				B9EF7B4D18C5298200420F45 /* ILLiLListModel.m in Sources */,
+				B9C0588518FC5A6400866B8B /* ILLAddiLListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

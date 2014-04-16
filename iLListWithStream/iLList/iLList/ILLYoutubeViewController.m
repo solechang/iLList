@@ -39,8 +39,17 @@
             [self performSegueWithIdentifier:@"loginSegue" sender:self];
         } else {
             // There is a logged in user
+            [[ILLiLListModel sharedModel] setUserID:user.userId];
         }
     }];
+}
+- (IBAction)addiLListButton:(id)sender {
+    
+    [self performSegueWithIdentifier:@"addIllist" sender:self];
+}
+- (IBAction)viewiLListButton:(id)sender {
+    [self performSegueWithIdentifier:@"viewIllists" sender:self];
+    
 }
 
 - (void)didReceiveMemoryWarning
