@@ -69,16 +69,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+//#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+//#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    NSLog(@"1.)");
     
     // SET THIS********$$$$$$$$$$
     // THis may be a problem when loading user's playlists
@@ -87,10 +86,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"3.)");
-    
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"illistnames" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"illistNames" forIndexPath:indexPath];
     
     __block NSMutableArray *playlists;
     
@@ -106,7 +103,6 @@
     
     [userRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSDictionary *userData = snapshot.value;
-        NSLog(@"3.)%@", snapshot.value);
         playlists = userData[@"illist"];
         NSString *tmpName = [playlists objectAtIndex:indexPath.row];
         [playlistsRefURL stringByAppendingString:tmpName];
