@@ -37,25 +37,20 @@
 
 }
 - (void) viewWillAppear:(BOOL)animated {
-    NSLog(@"0.1.)");
 
-    
     [[ILLiLListModel sharedModel] checkAuthStatusWithBlock:^(NSError* error, FAUser* user) {
-        NSLog(@"4.)");
         if (error != nil) {
             // Oh no! There was an error performing the check
-            NSLog(@"0.2.)");
+
         } else if (user == nil) {
             // No user is logged in
-            NSLog(@"0.3.)");
+
             [self performSegueWithIdentifier:@"loginSegue" sender:self];
         } else {
             // There is a logged in user
             [[ILLiLListModel sharedModel] setUserID:user.userId];
-            NSLog(@"0.5.)");
         }
     }];
-    NSLog(@"0.)");
 }
 - (IBAction)createIllist:(id)sender {
     [self performSegueWithIdentifier:@"createSegue" sender:self];
@@ -83,13 +78,16 @@
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
+    NSLog(@"1.)");
     
     // SET THIS********$$$$$$$$$$
+    // THis may be a problem when loading user's playlists
     return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"3.)");
     
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"illistnames" forIndexPath:indexPath];
@@ -113,7 +111,7 @@
         NSString *tmpName = [playlists objectAtIndex:indexPath.row];
         [playlistsRefURL stringByAppendingString:tmpName];
         Firebase* playlistsRef = [[Firebase alloc] initWithUrl:playlistsRefURL];
-//        cell.textLabel.text =
+//        cell.textLabel.text = @"HI!";
 
 
     }];
