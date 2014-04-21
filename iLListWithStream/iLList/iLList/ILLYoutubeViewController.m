@@ -48,6 +48,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     self.webView.hidden = TRUE;
+     self.webView.mediaPlaybackRequiresUserAction = NO ;
     [self searchYoutubeForTerm:self.searchBar.text];
     [self.searchBar resignFirstResponder];
 }
@@ -93,15 +94,14 @@
     NSLog(@"Embed video id: %@", videoID);
     NSString *htmlString = @"<html><head>\
     <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 320\"/></head>\
-    <body style=\"background:#000;margin-top:0px;margin-left:0px\">\
-    <iframe id=\"ytplayer\" type=\"text/html\" width=\"320\" height=\"240\"\
-    src=\"http://www.youtube.com/embed/%@?autoplay=1\"\
-    frameborder=\"0\"/>\
-    </body></html>";
+    <body style=\"background:#000;margin-top:0px;margin-left:0px\"> <script> var tag = document.createElement('script'); tag.src = \"http://www.youtube.com/player_api\"; var firstScriptTag = document.getElementsByTagName('script')[0]; firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); var player; function onYouTubePlayerAPIReady() { player = new YT.Player('player', { width:'%0.0f', height:'%0.0f', videoId:'%@', events: { 'onReady': onPlayerReady, } }); } function onPlayerReady(event) { event.target.playVideo(); } </script></body></html>";
     
     htmlString = [NSString stringWithFormat:htmlString, videoID, videoID];
     
-    [self.webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"http://www.youtube.com"]];
+    //this line is to ensure that we can autoplay the youtube video - seb
+    
+    [self.webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] resourceURL]];
+    
 }
 
 #pragma mark - Load Videos into Table
@@ -121,6 +121,30 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VideoCell" forIndexPath:indexPath];
     VideoModel *tmp = [self.results objectAtIndex:indexPath.row];
     cell.textLabel.text = tmp.title;
+    
+    //Create the button and add it to the cell -added by seb
+	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *btnImage = [UIImage imageNamed:@"play-32.png"]; //use play button img
+    [button setImage:btnImage forState:UIControlStateNormal];
+	[button addTarget:self
+			   action:@selector(customActionPressed:) //selector for button pressed
+	 forControlEvents:UIControlEventTouchDown];
+	button.frame = CGRectMake(250, 0, btnImage.size.width, btnImage.size.height); //button frame is equal to image size
+    
+	[cell addSubview:button]; //add first button to cell
+    
+    //second button
+	UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *btnImage2 = [UIImage imageNamed:@"plus-32.png"]; //use plus button img
+    [button2 setImage:btnImage2 forState:UIControlStateNormal];
+	[button2 addTarget:self
+			   action:@selector(customAction2Pressed:) //selector for button pressed
+	 forControlEvents:UIControlEventTouchDown];
+	button2.frame = CGRectMake(280, 0, btnImage2.size.width, btnImage2.size.height); //button frame is equal to image size
+    
+	[cell addSubview:button2]; //add second button to cell
+    
+    
     return cell;
 }
 
