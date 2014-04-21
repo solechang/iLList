@@ -12,9 +12,13 @@
 
 @interface ILLListOfIllistsViewController ()
 
+@property (nonatomic, assign) int myInt;
 @end
 
 @implementation ILLListOfIllistsViewController
+
+NSString* useridForIllistsView;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,28 +33,49 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
 }
-- (void) viewWillAppear:(BOOL)animated {
 
+- (void) viewWillAppear:(BOOL)animated {
+   
+    // Although the user illists is listed, it happens to be slow because of race conditions
+    // Way around is to store the user's playlists in core data, so that it will displayed quickly
+    // rather than waiting for the user's illists to pop from firebase
     [[ILLiLListModel sharedModel] checkAuthStatusWithBlock:^(NSError* error, FAUser* user) {
         if (error != nil) {
             // Oh no! There was an error performing the check
-
+            
         } else if (user == nil) {
             // No user is logged in
-
+            
             [self performSegueWithIdentifier:@"loginSegue" sender:self];
         } else {
             // There is a logged in user
             [[ILLiLListModel sharedModel] setUserID:user.userId];
+            useridForIllistsView = user.userId;
+
+            //create string to reference user's individual illists
+            NSString *linkUsers = @"https://illist.firebaseio.com/users/";
+            NSString *linkUserID = [[ILLiLListModel sharedModel] userID];
+
+            linkUsers = [linkUsers stringByAppendingString:useridForIllistsView];
+
+            //create reference to user's illists table
+            NSString* playlistsRefURL = [[NSString alloc] initWithFormat:@"https://illist.firebaseio.com/playlists/"];
+            Firebase* userRef = [[Firebase alloc] initWithUrl:linkUsers];
+            
+//            [userRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+//                NSLog(@"%@", snapshot.value);
+//                
+//            }];
+            [userRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+                
+                NSLog(@"%@", snapshot.value);
+            }];
+            
         }
     }];
+    
 }
 - (IBAction)createIllist:(id)sender {
     [self performSegueWithIdentifier:@"createSegue" sender:self];
