@@ -13,13 +13,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="illistnames" id="OGt-xW-1oW">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="illistNames" id="OGt-xW-1oW">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OGt-xW-1oW" id="yqg-3I-alU">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="MsU-CO-2bj" kind="push" identifier="searchSegue" id="lir-bW-yBU"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -27,11 +30,26 @@
                             <outlet property="delegate" destination="q6G-Vv-tYz" id="vJ1-JR-zbz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="iLLists" id="YH5-An-Thz"/>
+                    <navigationItem key="navigationItem" title="iLLists" id="YH5-An-Thz">
+                        <barButtonItem key="leftBarButtonItem" title="Search" id="SA6-do-W4R">
+                            <connections>
+                                <action selector="searchSongs:" destination="q6G-Vv-tYz" id="0fB-kb-fd6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="mvb-ED-8R5">
+                            <connections>
+                                <action selector="createIllist:" destination="q6G-Vv-tYz" id="upf-up-Iqj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="xEs-7U-9N7" kind="push" identifier="loginSegue" id="0iI-bP-fAv"/>
+                        <segue destination="hOr-NI-nK6" kind="push" identifier="createSegue" id="cOn-cE-ZDE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCr-p2-GfU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1101" y="-1588"/>
+            <point key="canvasLocation" x="461" y="-642"/>
         </scene>
         <!--AddiL List View Controller - Create new iLList-->
         <scene sceneID="ywi-nj-mfN">
@@ -288,7 +306,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="MsU-CO-2bj" kind="relationship" relationship="rootViewController" id="2a1-Ut-1Kf"/>
+                        <segue destination="q6G-Vv-tYz" kind="relationship" relationship="rootViewController" id="QBf-3R-RCM"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b3L-hP-cFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -421,30 +439,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="F7e-yH-oPs">
-                        <barButtonItem key="leftBarButtonItem" title="View iLLists" id="tej-Op-Ljq">
-                            <connections>
-                                <action selector="viewiLListButton:" destination="MsU-CO-2bj" id="0gP-FP-5F8"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add iLList" id="bn9-ZL-Nb4">
-                            <connections>
-                                <action selector="addiLListButton:" destination="MsU-CO-2bj" id="E8m-2q-CsX"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="F7e-yH-oPs"/>
                     <connections>
                         <outlet property="searchBar" destination="iQY-ib-0f6" id="GLI-mA-Lub"/>
                         <outlet property="tableView" destination="N5t-OR-W0P" id="50n-a0-Qof"/>
                         <outlet property="webView" destination="0r4-ao-N5f" id="xkI-xE-OOu"/>
-                        <segue destination="xEs-7U-9N7" kind="push" identifier="loginSegue" id="XII-jU-7fg"/>
-                        <segue destination="hOr-NI-nK6" kind="push" identifier="addIllist" id="EjJ-hK-WVI"/>
-                        <segue destination="q6G-Vv-tYz" kind="push" identifier="viewIllists" id="jTc-ay-SaP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGg-GH-mwf" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="550" y="-639"/>
+            <point key="canvasLocation" x="1101" y="-1587"/>
         </scene>
     </scenes>
     <resources>
