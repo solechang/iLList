@@ -18,6 +18,7 @@
 @implementation ILLListOfIllistsViewController
 
 NSString* useridForIllistsView;
+NSMutableArray* playlistArray;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -41,6 +42,8 @@ NSString* useridForIllistsView;
     // Although the user illists is listed, it happens to be slow because of race conditions
     // Way around is to store the user's playlists in core data, so that it will displayed quickly
     // rather than waiting for the user's illists to pop from firebase
+    
+    playlistArray = [[NSMutableArray alloc] init];
     [[ILLiLListModel sharedModel] checkAuthStatusWithBlock:^(NSError* error, FAUser* user) {
         if (error != nil) {
             // Oh no! There was an error performing the check
@@ -55,22 +58,24 @@ NSString* useridForIllistsView;
             useridForIllistsView = user.userId;
 
             //create string to reference user's individual illists
-            NSString *linkUsers = @"https://illist.firebaseio.com/users/";
-            NSString *linkUserID = [[ILLiLListModel sharedModel] userID];
+            NSString *linkUsers = @"https://illist.firebaseio.com/users/%@/illists";
+           // NSString *linkUserID = [[ILLiLListModel sharedModel] userID];
 
-            linkUsers = [linkUsers stringByAppendingString:useridForIllistsView];
-
-            //create reference to user's illists table
-            NSString* playlistsRefURL = [[NSString alloc] initWithFormat:@"https://illist.firebaseio.com/playlists/"];
+            linkUsers = [NSString stringWithFormat:linkUsers,useridForIllistsView];
             Firebase* userRef = [[Firebase alloc] initWithUrl:linkUsers];
+            
+            //create reference to user's illists table
+            //NSString* playlistsRefURL = [[NSString alloc] initWithFormat:@"https://illist.firebaseio.com/playlists/"];
+            
             
 //            [userRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
 //                NSLog(@"%@", snapshot.value);
 //                
 //            }];
-            [userRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-                
-                NSLog(@"%@", snapshot.value);
+            [userRef observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+                [playlistArray addObject:snapshot];
+                [self.tableView reloadData];
+                NSLog(@"Playlist %@", snapshot.value);
             }];
             
         }
@@ -106,37 +111,31 @@ NSString* useridForIllistsView;
     
     // SET THIS********$$$$$$$$$$
     // THis may be a problem when loading user's playlists
-    return 0;
+    return playlistArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"illistNames" forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"illistNames";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    __block NSMutableArray *playlists;
     
-    //create string to reference user's individual illists
-    NSString *linkUsers = @"https://illist.firebaseio.com/users/";
-    NSString *linkUserID = [[ILLiLListModel sharedModel] userID];
-
-    linkUsers = [linkUsers stringByAppendingString:linkUserID];
-
-    //create reference to user's illists table
-    NSString* playlistsRefURL = [[NSString alloc] initWithFormat:@"https://illist.firebaseio.com/playlists/"];
-    Firebase* userRef = [[Firebase alloc] initWithUrl:linkUsers];
+    if (cell == nil) {
+        
+        /*
+         *   Actually create a new cell (with an identifier so that it can be dequeued).
+         */
+        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+    }
     
-    [userRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSDictionary *userData = snapshot.value;
-        playlists = userData[@"illist"];
-        NSString *tmpName = [playlists objectAtIndex:indexPath.row];
-        [playlistsRefURL stringByAppendingString:tmpName];
-        Firebase* playlistsRef = [[Firebase alloc] initWithUrl:playlistsRefURL];
-//        cell.textLabel.text = @"HI!";
-
-
-    }];
     
+    FDataSnapshot *playlistSnapshot = playlistArray[indexPath.row];
+    cell.textLabel.text = playlistSnapshot.value;
+
     return cell;
 }
 
