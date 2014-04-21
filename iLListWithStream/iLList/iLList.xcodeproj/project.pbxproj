@@ -64,6 +64,7 @@
 		325F263B19053CBB00632F83 /* plus-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 325F263519053CBB00632F83 /* plus-128.png */; };
 		3297CE6E18FB8B67000651B5 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B956D2E418EDFC0B0006B52F /* Firebase.framework */; };
 		3297CE6F18FB8B6A000651B5 /* FirebaseSimpleLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B956D2E618EDFD560006B52F /* FirebaseSimpleLogin.framework */; };
+		32B824CC1905B3B800E6274A /* youtube.html in Resources */ = {isa = PBXBuildFile; fileRef = 32B824CB1905B3B800E6274A /* youtube.html */; };
 		56B7349E18E0CE2700C48A90 /* JSONModel+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B7348518E0CE2600C48A90 /* JSONModel+CoreData.m */; };
 		56B7349F18E0CE2700C48A90 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B7348718E0CE2600C48A90 /* JSONModel.m */; };
 		56B734A018E0CE2700C48A90 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B7348918E0CE2600C48A90 /* JSONModelArray.m */; };
@@ -174,6 +175,7 @@
 		325F263319053CBB00632F83 /* plus-75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-75.png"; sourceTree = "<group>"; };
 		325F263419053CBB00632F83 /* plus-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-100.png"; sourceTree = "<group>"; };
 		325F263519053CBB00632F83 /* plus-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-128.png"; sourceTree = "<group>"; };
+		32B824CB1905B3B800E6274A /* youtube.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = youtube.html; sourceTree = "<group>"; };
 		56B7348418E0CE2600C48A90 /* JSONModel+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONModel+CoreData.h"; sourceTree = "<group>"; };
 		56B7348518E0CE2600C48A90 /* JSONModel+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONModel+CoreData.m"; sourceTree = "<group>"; };
 		56B7348618E0CE2600C48A90 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
@@ -490,6 +492,7 @@
 		B90341DF18B558E20055AEAC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				32B824CB1905B3B800E6274A /* youtube.html */,
 				B90341E018B558E20055AEAC /* iLList-Info.plist */,
 				B90341E118B558E20055AEAC /* InfoPlist.strings */,
 				B90341E418B558E20055AEAC /* main.m */,
@@ -659,6 +662,7 @@
 				323D560A18FB91CA00714BC2 /* audio_wave-128.png in Resources */,
 				325F263819053CBB00632F83 /* plus-50.png in Resources */,
 				323D560218FB91CA00714BC2 /* angry-128.png in Resources */,
+				32B824CC1905B3B800E6274A /* youtube.html in Resources */,
 				323D561418FB91CA00714BC2 /* automatic-512.png in Resources */,
 				323D561A18FB91CA00714BC2 /* headphones-128.png in Resources */,
 				B90341EC18B558E20055AEAC /* Main.storyboard in Resources */,
