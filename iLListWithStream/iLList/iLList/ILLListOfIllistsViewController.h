@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ILLListOfIllistsViewController : UITableViewController
+@interface ILLListOfIllistsViewController : UITableViewController <UITableViewDataSource,UITableViewDelegate>
 
 @end

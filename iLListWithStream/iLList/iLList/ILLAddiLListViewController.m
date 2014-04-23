@@ -63,7 +63,7 @@ NSString* illistName;
     Firebase* userRef = [[Firebase alloc] initWithUrl:linkUsers];
     
     // Added a playlist in user's illist
-    [[userRef childByAppendingPath:newPushPlaylistRef.name] setValue:newPushPlaylistRef.name];
+    [[userRef childByAppendingPath:newPushPlaylistRef.name] setValue:playlistname];
     
     /*
     users.id -> illist -> instead of the auto named id for the playlist, it 

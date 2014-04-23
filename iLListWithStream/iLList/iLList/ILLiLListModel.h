@@ -13,6 +13,7 @@
 @interface ILLiLListModel : NSObject
 
 @property(weak,nonatomic) NSString* userID;
+@property(nonatomic) BOOL flagLogin;
 
 +(instancetype) sharedModel;
 

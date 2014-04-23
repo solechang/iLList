@@ -90,6 +90,7 @@
                     
                 } else {
                     NSLog(@" 6.) User julie exists");
+                    [[ILLiLListModel sharedModel] setFlagLogin:NO];
                     [self.navigationController popViewControllerAnimated:YES];
                 }
             }];

@@ -28,9 +28,10 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)logOutButton:(id)sender {
-   
+    [[ILLiLListModel sharedModel] setFlagLogin:YES];
     [[ILLiLListModel sharedModel] logout];
     [self.tabBarController setSelectedIndex:0];
+    
     
 }
 
