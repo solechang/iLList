@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        
+        <script>
+            var elapsed = -1;
+            var isPlayerLoaded = false;
+            var tag = document.createElement('script');
+            tag.src = "http://www.youtube.com/player_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            
+            // 4. The API will call this function when the video player is ready.
+            function onPlayerReady(event) {
+                player.playVideo();
+            }
+            
+            //            function onPlayerError(event) {
+            //            }
+            //
+            function onPlayerStateChange(event) {
+                var state = '';
+                switch(event.data) {
+                    case YT.PlayerState.ENDED:
+                        state = 'ended';
+                        break;
+                    case YT.PlayerState.PLAYING:
+                        state = 'playing';
+                        break;
+                    case YT.PlayerState.PAUSED:
+                        state = 'paused';
+                        break;
+                    case YT.PlayerState.BUFFERING:
+                        state = 'buffering';
+                        break;
+                    case YT.PlayerState.CUED:
+                        state = 'cued';
+                        break;
+                    default:
+                        state = 'unstarted';
+                        break;
+                }
+                jQuery('#log').append(state + "<br/>");
+            }
+            
+            // 3. This function creates an <iframe> (and YouTube player)
+            //    after the API code downloads.
+            var player;
+            function onYouTubePlayerAPIReady() {
+                player = new YT.Player('player', {
+                                       height: '320',
+                                       width: '240',
+                                       videoId: '[[[video_id]]]',
+                                       playerVars: { 'autoplay': 0, 'modestbranding': 1, 'rel': 0, 'showinfo': 0, 'iv_load_policy': 3, 'controls': 1, 'playsinline':1 },
+                                       events: {
+                                       'onReady': onPlayerReady,
+                                       'onStateChange': onPlayerStateChange
+                                       //                                       'onError': onPlayerError
+                                       }
+                                       });
+            }
+            
+            </script>
+    </head>
+    <body style="padding:0;margin:0;background-color:#000000;">
+        <div id="log" style="background:#fff;height:200px;width:100%;margin-top:20px;"></div>
+        <div id="player" frameborder="0"></div>
+    </body>
+</html>

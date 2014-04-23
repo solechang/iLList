@@ -61,6 +61,4 @@ FirebaseSimpleLogin *authClient;
     [authClient logout];
 }
 
-
-
 @end

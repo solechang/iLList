@@ -48,7 +48,6 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     self.webView.hidden = TRUE;
-     self.webView.mediaPlaybackRequiresUserAction = NO ;
     [self searchYoutubeForTerm:self.searchBar.text];
     [self.searchBar resignFirstResponder];
 }
@@ -79,7 +78,9 @@
 
 - (void)loadWebViewWithVideo:(VideoModel *)video
 {
+    /*
     self.webView.hidden = FALSE;
+    self.webView.mediaPlaybackRequiresUserAction = YES ;
     VideoLink *link = video.link[0];
     NSLog(@"Video Link: %@",video.link[0]);
     NSString *videoID = nil;
@@ -94,14 +95,41 @@
     NSLog(@"Embed video id: %@", videoID);
     NSString *htmlString = @"<html><head>\
     <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 320\"/></head>\
-    <body style=\"background:#000;margin-top:0px;margin-left:0px\"> <script> var tag = document.createElement('script'); tag.src = \"http://www.youtube.com/player_api\"; var firstScriptTag = document.getElementsByTagName('script')[0]; firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); var player; function onYouTubePlayerAPIReady() { player = new YT.Player('player', { width:'%0.0f', height:'%0.0f', videoId:'%@', events: { 'onReady': onPlayerReady, } }); } function onPlayerReady(event) { event.target.playVideo(); } </script></body></html>";
+    <body style=\"background:#000;margin-top:0px;margin-left:0px\">\
+  <script> var tag = document.createElement('script'); tag.src = \"http://www.youtube.com/player_api\"; var firstScriptTag = document.getElementsByTagName('script')[0]; firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); var player; function onYouTubePlayerAPIReady() { player = new YT.Player('player', { width:'%%0.0f', height:'%%0.0f', videoId:%@, events: { 'onReady': onPlayerReady, } }); } function onPlayerReady(event) { event.target.playVideo(); } </script></body></html>";
     
-    htmlString = [NSString stringWithFormat:htmlString, videoID, videoID];
+    htmlString = [NSString stringWithFormat:htmlString, videoID];
     
     //this line is to ensure that we can autoplay the youtube video - seb
     
-    [self.webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] resourceURL]];
     
+    [self.webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] resourceURL]];
+     */
+    self.webView.hidden=TRUE;
+    self.webView.backgroundColor = [UIColor redColor];
+    self.webView.allowsInlineMediaPlayback = YES;
+    self.webView.mediaPlaybackRequiresUserAction = NO;
+    [self.view addSubview:self.webView];
+    
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"youtube" ofType:@"html"];
+    NSString *template = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    NSMutableString *html = [NSMutableString stringWithString:template];
+    
+    VideoLink *link = video.link[0];
+    NSLog(@"Video Link: %@",video.link[0]);
+    NSString *videoID = nil;
+    NSArray *urlToBeConverted = [link.href.query componentsSeparatedByString:@"&"];
+    for (NSString *pair in urlToBeConverted) {
+        NSArray *pairComponents = [pair componentsSeparatedByString:@"="];
+        if([pairComponents[0] isEqualToString:@"v"]) {
+            videoID = pairComponents[1];
+            break;
+        }
+    }
+    
+    [html replaceOccurrencesOfString:@"[[[video_id]]]" withString:videoID options:NSLiteralSearch range:NSMakeRange(0, html.length)];
+    [self.webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://showyou.com"]];
 }
 
 #pragma mark - Load Videos into Table

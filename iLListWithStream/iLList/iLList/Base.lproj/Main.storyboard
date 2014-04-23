@@ -113,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12g-cc-u2i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1269" y="-911"/>
+            <point key="canvasLocation" x="1101" y="-935"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="9c6-vY-hJA">
@@ -347,7 +347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gg1-ra-pS7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-38" y="67"/>
+            <point key="canvasLocation" x="-46" y="61"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4HB-lJ-UiP">
@@ -400,7 +400,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dK0-Rz-GXM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-38" y="761"/>
+            <point key="canvasLocation" x="-46" y="761"/>
         </scene>
         <!--Youtube View Controller-->
         <scene sceneID="qDs-2n-mho">
