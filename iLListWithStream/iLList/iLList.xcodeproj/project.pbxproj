@@ -103,6 +103,7 @@
 		B95CBBC218C1136D00A5AFF1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95CBBC118C1136D00A5AFF1 /* Accounts.framework */; };
 		B95CBBC418C1137300A5AFF1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95CBBC318C1137300A5AFF1 /* Social.framework */; };
 		B95CBBC718C113C000A5AFF1 /* ILLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B95CBBC618C113C000A5AFF1 /* ILLLoginViewController.m */; };
+		B99E110E190AFEB500D1676E /* ILLPlaylistSongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B99E110D190AFEB500D1676E /* ILLPlaylistSongsViewController.m */; };
 		B9A9F4BC18ECADFF001E69CE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A9F4BB18ECADFF001E69CE /* FacebookSDK.framework */; };
 		B9C0588518FC5A6400866B8B /* ILLAddiLListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C0588418FC5A6400866B8B /* ILLAddiLListViewController.m */; };
 		B9C0588B18FC760F00866B8B /* ILLListOfIllistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C0588A18FC760F00866B8B /* ILLListOfIllistsViewController.m */; };
@@ -240,6 +241,8 @@
 		B95CBBC318C1137300A5AFF1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		B95CBBC518C113C000A5AFF1 /* ILLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLLoginViewController.h; sourceTree = "<group>"; };
 		B95CBBC618C113C000A5AFF1 /* ILLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLLoginViewController.m; sourceTree = "<group>"; };
+		B99E110C190AFEB500D1676E /* ILLPlaylistSongsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLPlaylistSongsViewController.h; sourceTree = "<group>"; };
+		B99E110D190AFEB500D1676E /* ILLPlaylistSongsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLPlaylistSongsViewController.m; sourceTree = "<group>"; };
 		B9A9F4BB18ECADFF001E69CE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		B9C0588318FC5A6400866B8B /* ILLAddiLListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLAddiLListViewController.h; sourceTree = "<group>"; };
 		B9C0588418FC5A6400866B8B /* ILLAddiLListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLAddiLListViewController.m; sourceTree = "<group>"; };
@@ -478,6 +481,8 @@
 				B95CBBC618C113C000A5AFF1 /* ILLLoginViewController.m */,
 				B9057AE418CD65F8005D0C45 /* ILLRegisterViewController.h */,
 				B9057AE518CD65F8005D0C45 /* ILLRegisterViewController.m */,
+				B99E110C190AFEB500D1676E /* ILLPlaylistSongsViewController.h */,
+				B99E110D190AFEB500D1676E /* ILLPlaylistSongsViewController.m */,
 				B92E59AA18F884AD0033F64A /* ILLUserViewController.h */,
 				B92E59AB18F884AD0033F64A /* ILLUserViewController.m */,
 				56B734C718E0CEA800C48A90 /* ILLYoutubeViewController.h */,
@@ -691,6 +696,7 @@
 				B92E59AC18F884AD0033F64A /* ILLUserViewController.m in Sources */,
 				B95CBBC718C113C000A5AFF1 /* ILLLoginViewController.m in Sources */,
 				56B734A718E0CE2700C48A90 /* JSONKeyMapper.m in Sources */,
+				B99E110E190AFEB500D1676E /* ILLPlaylistSongsViewController.m in Sources */,
 				56B7349F18E0CE2700C48A90 /* JSONModel.m in Sources */,
 				56B734B018E0CE4D00C48A90 /* MediaThumbnail.m in Sources */,
 				B9057AE618CD65F8005D0C45 /* ILLRegisterViewController.m in Sources */,

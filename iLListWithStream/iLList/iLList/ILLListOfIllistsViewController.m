@@ -9,6 +9,7 @@
 #import "ILLListOfIllistsViewController.h"
 #import <Firebase/Firebase.h>
 #import "ILLiLListModel.h"
+#import "ILLPlaylistSongsViewController.h"
 
 @interface ILLListOfIllistsViewController ()
 
@@ -151,6 +152,26 @@ NSMutableArray* playlistArray;
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *cellText = selectedCell.textLabel.text;
+
+    if (indexPath) {
+        NSIndexPath *path = indexPath;
+        NSInteger theInteger = path.row;
+        
+        ILLPlaylistSongsViewController *second = [[ILLPlaylistSongsViewController alloc] init];
+        second.myTitle = cellText;
+        // you need to present second somehow, viewDidLoad won't be called until then
+        // example if using a navigationController
+        [self.navigationController pushViewController:second animated:YES];
+    }
+    
+ 
+    
+}
+    
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

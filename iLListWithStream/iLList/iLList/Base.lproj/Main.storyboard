@@ -36,9 +36,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="MsU-CO-2bj" kind="push" identifier="searchSegue" id="lir-bW-yBU"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -50,6 +47,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Search" id="SA6-do-W4R">
                             <connections>
                                 <action selector="searchSongs:" destination="q6G-Vv-tYz" id="0fB-kb-fd6"/>
+                                <segue destination="MsU-CO-2bj" kind="push" id="rVc-Cb-Quy"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Create" id="mvb-ED-8R5">
@@ -113,7 +111,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12g-cc-u2i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1101" y="-935"/>
+            <point key="canvasLocation" x="1101" y="-379"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="9c6-vY-hJA">
@@ -212,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bhc-Pp-gfk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1101" y="-225"/>
+            <point key="canvasLocation" x="1101" y="331"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="Geq-Yc-G6x">
@@ -311,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nMa-fZ-dNA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1615" y="-225"/>
+            <point key="canvasLocation" x="1615" y="331"/>
         </scene>
         <!--Navigation Controller - iLList-->
         <scene sceneID="n2h-oE-umn">
@@ -402,6 +400,34 @@
             </objects>
             <point key="canvasLocation" x="-46" y="761"/>
         </scene>
+        <!--Playlist Songs View Controller-->
+        <scene sceneID="nsx-sG-HRB">
+            <objects>
+                <tableViewController id="9iK-nb-1k0" customClass="ILLPlaylistSongsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="yKr-Ta-tee">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="aTA-pw-5Ic">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aTA-pw-5Ic" id="fI4-kR-dnw">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9iK-nb-1k0" id="JB5-Jl-feN"/>
+                            <outlet property="delegate" destination="9iK-nb-1k0" id="AmJ-4T-mgG"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aCR-JF-ljt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1101" y="-1709"/>
+        </scene>
         <!--Youtube View Controller-->
         <scene sceneID="qDs-2n-mho">
             <objects>
@@ -467,7 +493,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGg-GH-mwf" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1101" y="-1587"/>
+            <point key="canvasLocation" x="1101" y="-1031"/>
         </scene>
     </scenes>
     <resources>
