@@ -29,12 +29,25 @@
     [super viewDidLoad];
     self.navigationItem.title = self.myTitle;
     
+    //Create add button for the nav bar - by seb
+	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *btnImage = [UIImage imageNamed:@"plus-32.png"]; //use play button img
+    [button setImage:btnImage forState:UIControlStateNormal];
+	[button addTarget:self
+			   action:@selector(addButtonPressed) //selector for button pressed
+	 forControlEvents:UIControlEventTouchDown];
+	button.frame = CGRectMake(250, 0, btnImage.size.width, btnImage.size.height); //button frame is equal to image size
+    
+    UIBarButtonItem* addBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    [self.navigationItem setRightBarButtonItem:addBarButtonItem];
+
+  //  [flipButton release];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+     //self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,7 +55,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void) addButtonPressed{
+    NSLog(@"my storyboard = %@", self.storyboard);
+    [self performSegueWithIdentifier:@"addASong" sender:self];
+}
 
 #pragma mark - Table view data source
 

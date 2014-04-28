@@ -102,6 +102,7 @@ NSMutableArray* playlistArray;
   
 }
 - (IBAction)createIllist:(id)sender {
+   // NSLog(@"my storyboard = %@", self.storyboard);
     [self performSegueWithIdentifier:@"createSegue" sender:self];
 }
 - (IBAction)searchSongs:(id)sender {
@@ -161,11 +162,15 @@ NSMutableArray* playlistArray;
         NSIndexPath *path = indexPath;
         NSInteger theInteger = path.row;
         
-        ILLPlaylistSongsViewController *second = [[ILLPlaylistSongsViewController alloc] init];
-        second.myTitle = cellText;
+       //ILLPlaylistSongsViewController *second = [[ILLPlaylistSongsViewController alloc] init];
+       // second.myTitle = cellText;
+        //ILLTestPlaylistTableViewController *second = [[ILLTestPlaylistTableViewController alloc] init];
+         //second.myTitle = cellText;
+
         // you need to present second somehow, viewDidLoad won't be called until then
         // example if using a navigationController
-        [self.navigationController pushViewController:second animated:YES];
+        [self performSegueWithIdentifier:@"viewPlaylistSegue" sender:self];
+        //[self.navigationController pushViewController:second animated:YES];
     }
     
  
