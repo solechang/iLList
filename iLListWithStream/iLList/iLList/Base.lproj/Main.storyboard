@@ -426,7 +426,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCR-JF-ljt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1101" y="-1709"/>
+            <point key="canvasLocation" x="735" y="-1393"/>
         </scene>
         <!--Youtube View Controller-->
         <scene sceneID="qDs-2n-mho">
