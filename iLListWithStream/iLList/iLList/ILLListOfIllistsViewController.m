@@ -161,7 +161,8 @@ NSMutableArray* playlistArray;
     if (indexPath) {
         NSIndexPath *path = indexPath;
         NSInteger theInteger = path.row;
-        
+        FDataSnapshot *playlistSnapshot = playlistArray[indexPath.row];
+        [[ILLiLListModel sharedModel] setCurrentPlaylist: playlistSnapshot.ref];
        //ILLPlaylistSongsViewController *second = [[ILLPlaylistSongsViewController alloc] init];
        // second.myTitle = cellText;
         //ILLTestPlaylistTableViewController *second = [[ILLTestPlaylistTableViewController alloc] init];

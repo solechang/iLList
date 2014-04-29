@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Firebase/Firebase.h>
 
 @interface ILLPlaylistSongsViewController : UITableViewController
 @property (nonatomic) NSString* myTitle;
+@property(weak, nonatomic) Firebase *thisPlaylist;
 @end

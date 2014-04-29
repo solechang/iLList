@@ -14,6 +14,7 @@
 
 @property(weak,nonatomic) NSString* userID;
 @property(nonatomic) BOOL flagLogin;
+@property(weak,nonatomic) Firebase *currentPlaylist;
 
 +(instancetype) sharedModel;
 
