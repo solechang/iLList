@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Firebase/Firebase.h>
 
 @interface ILLYoutubeViewController : UIViewController <UISearchBarDelegate, UITableViewDelegate>
 
+@property(weak,nonatomic) NSString *songName;
+@property(weak, nonatomic) Firebase *thisPlaylist;
 @end

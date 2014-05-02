@@ -11,5 +11,7 @@
 
 @interface ILLPlaylistSongsViewController : UITableViewController
 @property (nonatomic) NSString* myTitle;
+
+@property(weak,nonatomic) NSString *songName;
 @property(weak, nonatomic) Firebase *thisPlaylist;
 @end
