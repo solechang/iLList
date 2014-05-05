@@ -152,15 +152,29 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VideoCell" forIndexPath:indexPath];
     VideoModel *tmp = [self.results objectAtIndex:indexPath.row];
-    cell.textLabel.text = tmp.title;
+    NSString *tmpString = [[NSString alloc] initWithFormat:@"%@",tmp.title];
+    if ([tmpString length] > 29) {
+        tmpString = [tmpString substringToIndex:[tmpString length] - ([tmpString length]-27)];
+    } else {
+        //no characters to delete... attempting to do so will result in a crash
+    }
+     cell.textLabel.text = tmpString;
+    /*
+    //Create the button and add it to the cell -added by seb
+	UIButton *songTitleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[songTitleButton setTitle:[NSString stringWithFormat:@"%@",tmp.title]forState:UIControlStateNormal];
+    [songTitleButton setTitleColor:[UIColor colorWithRed:0.4 green:0.157 blue:0.024 alpha:1]forState: UIControlStateNormal];
+	songTitleButton.frame = CGRectMake(0, 0, 300, 50); //button frame is equal to image size
     
+	[cell addSubview:songTitleButton]; //add first button to cell
+    */
     //Create the button and add it to the cell -added by seb
 	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage *btnImage = [UIImage imageNamed:@"play-32.png"]; //use play button img
     [button setImage:btnImage forState:UIControlStateNormal];
     [button setTag:indexPath.row];
 	[button addTarget:self
-			   action:@selector(addSongToFirebasePlaylist:) //selector for button pressed
+			   action:@selector(streamSongFromButton:) //selector for button pressed
 	 forControlEvents:UIControlEventTouchDown];
 	button.frame = CGRectMake(250, 0, btnImage.size.width, btnImage.size.height); //button frame is equal to image size
     
@@ -180,6 +194,11 @@
     
     
     return cell;
+}
+-(void) streamSongFromButton: (UIButton *)button {
+    NSLog(@"called streamsongFromButton");
+    int row =button.tag;
+    [self loadWebViewWithVideo:self.results[row]];
 }
 
 -(void) addSongToFirebasePlaylist: (UIButton *)button {
@@ -243,7 +262,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self loadWebViewWithVideo:self.results[indexPath.row]];
+    //[self loadWebViewWithVideo:self.results[indexPath.row]];
 }
 
 
