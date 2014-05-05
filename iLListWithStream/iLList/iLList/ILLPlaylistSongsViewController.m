@@ -50,13 +50,18 @@ NSMutableArray* songArray;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
      //self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    songArray = [[NSMutableArray alloc] init];
+    self.thisPlaylist = [[ILLiLListModel sharedModel] currentPlaylist];
+    NSString *pushRefString = [[NSString alloc] initWithFormat:@"https://illist.firebaseio.com/playlists/"];
+    pushRefString = [pushRefString stringByAppendingString:self.thisPlaylist.name];
+    pushRefString = [pushRefString stringByAppendingString:@"/songs"];
+    NSLog(@"Song href: %@",pushRefString);
     
-    self.thisPlaylist = [[ILLiLListModel alloc] currentPlaylist];
+    Firebase* newPushSongRef = [[Firebase alloc] initWithUrl:pushRefString];
+    
 
-    Firebase* userRef = self.thisPlaylist;
-    
     // Retrieving playlist names from firebase when an element is added
-    [userRef observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+    [newPushSongRef observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         
         // Right when a illist name is added, this is called
         // However the snapshot is empty
@@ -80,21 +85,19 @@ NSMutableArray* songArray;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return songArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"songCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
@@ -109,7 +112,7 @@ NSMutableArray* songArray;
     }
     FDataSnapshot *playlistSnapshot = songArray[indexPath.row];
     
-    cell.textLabel.text = playlistSnapshot.value;
+    cell.textLabel.text = playlistSnapshot.name;
     
     return cell;
 }

@@ -61,4 +61,13 @@ FirebaseSimpleLogin *authClient;
     [authClient logout];
 }
 
+-(NSString *) removeUnknownCharacters: (NSString *)badString {
+    NSString *newString = [badString stringByReplacingOccurrencesOfString:@"." withString:@""];
+    newString = [newString stringByReplacingOccurrencesOfString:@"#" withString:@""];
+    newString = [newString stringByReplacingOccurrencesOfString:@"$" withString:@""];
+    newString = [newString stringByReplacingOccurrencesOfString:@"[" withString:@""];
+    newString = [newString stringByReplacingOccurrencesOfString:@"]" withString:@""];
+    return newString;
+}
+
 @end

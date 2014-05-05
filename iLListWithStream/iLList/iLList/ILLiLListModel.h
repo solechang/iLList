@@ -28,6 +28,8 @@
 
 -(void) logout;
 
+-(NSString *) removeUnknownCharacters: (NSString *)badString;
+
 
 
 @end

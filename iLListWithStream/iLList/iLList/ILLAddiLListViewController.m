@@ -50,8 +50,11 @@ NSString* illistName;
     //Create Value of this newCategory
     NSDictionary *newCategoryValue = @{@"votes":@0,@"created_at":@([NSDate date].timeIntervalSince1970)};
     
+    //validate playlist name
+    NSString *validatedPlaylistName = [[ILLiLListModel sharedModel] removeUnknownCharacters:playlistname];
+    
     // Added new playlist (auto generated id)
-    [[newPushPlaylistRef childByAppendingPath:playlistname] setValue:newCategoryValue];
+    [[newPushPlaylistRef childByAppendingPath:validatedPlaylistName] setValue:newCategoryValue];
     
     //create string to reference user's individual illists
     NSString *linkUsers = @"https://illist.firebaseio.com/users/";
