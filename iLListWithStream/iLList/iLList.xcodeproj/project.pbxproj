@@ -62,6 +62,8 @@
 		325F263919053CBB00632F83 /* plus-32@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 325F263319053CBB00632F83 /* plus-32@2x.png */; };
 		325F263A19053CBB00632F83 /* plus-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 325F263419053CBB00632F83 /* plus-100.png */; };
 		325F263B19053CBB00632F83 /* plus-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 325F263519053CBB00632F83 /* plus-128.png */; };
+		326CD5C819194D1400F26BED /* DNSSwipeableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 326CD5C719194D1400F26BED /* DNSSwipeableCell.m */; };
+		326CD5CB19194DFF00F26BED /* ILLFriendsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 326CD5CA19194DFF00F26BED /* ILLFriendsListCell.m */; };
 		3297CE6E18FB8B67000651B5 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B956D2E418EDFC0B0006B52F /* Firebase.framework */; };
 		3297CE6F18FB8B6A000651B5 /* FirebaseSimpleLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B956D2E618EDFD560006B52F /* FirebaseSimpleLogin.framework */; };
 		32B824CC1905B3B800E6274A /* youtube.html in Resources */ = {isa = PBXBuildFile; fileRef = 32B824CB1905B3B800E6274A /* youtube.html */; };
@@ -178,6 +180,10 @@
 		325F263319053CBB00632F83 /* plus-32@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-32@2x.png"; sourceTree = "<group>"; };
 		325F263419053CBB00632F83 /* plus-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-100.png"; sourceTree = "<group>"; };
 		325F263519053CBB00632F83 /* plus-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-128.png"; sourceTree = "<group>"; };
+		326CD5C619194D1400F26BED /* DNSSwipeableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNSSwipeableCell.h; sourceTree = "<group>"; };
+		326CD5C719194D1400F26BED /* DNSSwipeableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNSSwipeableCell.m; sourceTree = "<group>"; };
+		326CD5C919194DFF00F26BED /* ILLFriendsListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLFriendsListCell.h; sourceTree = "<group>"; };
+		326CD5CA19194DFF00F26BED /* ILLFriendsListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLFriendsListCell.m; sourceTree = "<group>"; };
 		32B824CB1905B3B800E6274A /* youtube.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = youtube.html; sourceTree = "<group>"; };
 		32E811BD190EE3D900C799B8 /* ILLnewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLnewTableViewCell.h; sourceTree = "<group>"; };
 		32E811BE190EE3D900C799B8 /* ILLnewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLnewTableViewCell.m; sourceTree = "<group>"; };
@@ -354,6 +360,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		326CD5C519194D0400F26BED /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				326CD5C619194D1400F26BED /* DNSSwipeableCell.h */,
+				326CD5C719194D1400F26BED /* DNSSwipeableCell.m */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
 		56B7348218E0CE2600C48A90 /* JSONModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,12 +490,15 @@
 		B90341DE18B558E20055AEAC /* iLList */ = {
 			isa = PBXGroup;
 			children = (
+				326CD5C519194D0400F26BED /* Library */,
 				323D55D418FB8E8200714BC2 /* Resources */,
 				B9EF7B4A18C528BE00420F45 /* Model */,
 				B90341E718B558E20055AEAC /* ILLAppDelegate.h */,
 				B90341E818B558E20055AEAC /* ILLAppDelegate.m */,
 				B9C0588318FC5A6400866B8B /* ILLAddiLListViewController.h */,
 				B9C0588418FC5A6400866B8B /* ILLAddiLListViewController.m */,
+				326CD5C919194DFF00F26BED /* ILLFriendsListCell.h */,
+				326CD5CA19194DFF00F26BED /* ILLFriendsListCell.m */,
 				B9F99A4A191869C20093C044 /* ILLFriendsTableViewController.h */,
 				B9F99A4B191869C20093C044 /* ILLFriendsTableViewController.m */,
 				B9C0588918FC760F00866B8B /* ILLListOfIllistsViewController.h */,
@@ -704,6 +722,7 @@
 				56B734B118E0CE4D00C48A90 /* VideoLink.m in Sources */,
 				56B734A518E0CE2700C48A90 /* JSONHTTPClient.m in Sources */,
 				B92E59AC18F884AD0033F64A /* ILLUserViewController.m in Sources */,
+				326CD5C819194D1400F26BED /* DNSSwipeableCell.m in Sources */,
 				B95CBBC718C113C000A5AFF1 /* ILLLoginViewController.m in Sources */,
 				56B734A718E0CE2700C48A90 /* JSONKeyMapper.m in Sources */,
 				B99E110E190AFEB500D1676E /* ILLPlaylistSongsViewController.m in Sources */,
@@ -718,6 +737,7 @@
 				56B734A618E0CE2700C48A90 /* JSONModel+networking.m in Sources */,
 				32E811BF190EE3D900C799B8 /* ILLnewTableViewCell.m in Sources */,
 				56B734A218E0CE2700C48A90 /* JSONModelError.m in Sources */,
+				326CD5CB19194DFF00F26BED /* ILLFriendsListCell.m in Sources */,
 				56B734C918E0CEA800C48A90 /* ILLYoutubeViewController.m in Sources */,
 				56B734A418E0CE2700C48A90 /* JSONAPI.m in Sources */,
 				B90341E918B558E20055AEAC /* ILLAppDelegate.m in Sources */,
