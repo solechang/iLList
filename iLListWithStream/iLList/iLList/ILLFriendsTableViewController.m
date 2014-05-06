@@ -9,14 +9,15 @@
 #import "ILLFriendsTableViewController.h"
 #import <Firebase/Firebase.h>
 
-@interface ILLFriendsTableViewController ()
-
+@interface ILLFriendsTableViewController () <DNSSwipeableCellDelegate, DNSSwipeableCellDataSource>
 @end
 
 @implementation ILLFriendsTableViewController
+
 NSArray* friends;
 NSMutableArray* matchedFriends;
 NSMutableArray* userArray;
+static NSString * const ILLFriendsListCellIdentifier = @"Cell";
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,6 +31,9 @@ NSMutableArray* userArray;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //Register the custom subclass
+    [self.tableView registerClass:[ILLFriendsListCell class] forCellReuseIdentifier:ILLFriendsListCellIdentifier];
     
     userArray = [[NSMutableArray alloc]init];
     matchedFriends  = [[NSMutableArray alloc]init];
@@ -126,11 +130,154 @@ NSMutableArray* userArray;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"friendCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    ILLFriendsListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
+    //NSString *textItem = self.itemTitles[indexPath.row];
+    //NSString *imageName = self.imageNames[indexPath.row % self.imageNames.count];
+    //UIImage *image = [UIImage imageNamed:imageName];
+   // cell.exampleLabel.text = textItem;
+    //cell.exampleImageView.image = image;
+    
     cell.textLabel.text = [matchedFriends[indexPath.row] name];
+    //Set up the buttons
+    cell.indexPath = indexPath;
+    cell.dataSource = self;
+    cell.delegate = self;
+    
+    [cell setNeedsUpdateConstraints];
+    
+    //Reopen the cell if it was already editing
+    //if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
+      //  [cell openCell:NO];
+    //}
+    
+
     return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *cellText = selectedCell.textLabel.text;
+    NSString *messageStr = [NSString stringWithFormat:@"whatever"];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alertName" message:messageStr delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100.0f;
+}
+- (NSInteger)numberOfButtonsInSwipeableCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row % 2 == 0) {
+        //Even rows have 2 options
+        return 2;
+    } else {
+        //Odd rows 3 options
+        return 3;
+    }
+}
+- (NSString *)titleForButtonAtIndex:(NSInteger)index inCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (index) {
+        case 0:
+            return NSLocalizedString(@"Delete", @"Delete");
+            break;
+        case 1:
+            return NSLocalizedString(@"Option 1", @"Option 1");
+            break;
+        case 2:
+            return NSLocalizedString(@"Option 2", @"Option 2");
+            break;
+        default:
+            break;
+    }
+    
+    return nil;
+}
+
+- (void)swipeableCell:(DNSSwipeableCell *)cell didSelectButtonAtIndex:(NSInteger)index
+{
+    
+    if (index == 0) {
+       // [self.cellsCurrentlyEditing removeObject:cell.indexPath];
+        [self tableView:self.tableView commitEditingStyle:UITableViewCellEditingStyleDelete forRowAtIndexPath:cell.indexPath];
+    } else {
+        [self showDetailForIndexPath:cell.indexPath fromDelegateButtonAtIndex:index];
+    }
+}
+- (UIColor *)backgroundColorForButtonAtIndex:(NSInteger)index inCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (index) {
+        case 0:
+            return [UIColor redColor];
+            break;
+        default: {
+            return [UIColor colorWithRed:48/255.0f green:190/255.0f blue:5/255.0f alpha:1.0f];
+        }
+            break;
+    }
+}
+- (UIColor *)textColorForButtonAtIndex:(NSInteger)index inCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (index) {
+        case 0:
+            return [UIColor colorWithRed:0/255.0f green:1/255.0f blue:0/255.0f alpha:1.0f];
+            break;
+        default: {
+          return [UIColor colorWithRed:0/255.0f green:1/255.0f blue:0/255.0f alpha:1.0f];
+        }
+            break;
+    }
+}
+- (void)swipeableCellDidOpen:(DNSSwipeableCell *)cell
+{
+    //[self.cellsCurrentlyEditing addObject:cell.indexPath];
+}
+- (void)swipeableCellDidClose:(DNSSwipeableCell *)cell
+{
+    //[self.cellsCurrentlyEditing removeObject:cell.indexPath];
+}
+
+- (void)showDetailForIndexPath:(NSIndexPath *)indexPath fromDelegateButtonAtIndex:(NSInteger)buttonIndex
+{
+    /*
+    //Instantiate the DetailVC out of the storyboard.
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    DetailViewController *detail = [storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
+    NSString *title = self.itemTitles[indexPath.row];
+    if (buttonIndex != -1) {
+        NSString *textForCellButton = [self titleForButtonAtIndex:buttonIndex inCellAtIndexPath:indexPath];
+        title = [NSString stringWithFormat:@"%@: %@", title, textForCellButton];
+    } else {
+        title = self.itemTitles[indexPath.row];
+    }
+    
+    detail.detailText = title;
+    NSString *imageName = self.imageNames[indexPath.row % self.imageNames.count];
+    detail.detailImage = [UIImage imageNamed:imageName];
+    
+    if (buttonIndex == -1) {
+        detail.title = @"Selected!";
+        [self.navigationController pushViewController:detail animated:YES];
+    } else {
+        //Present modally
+        detail.title = @"In the delegate!";
+        
+        //Setup nav controller to contain the detail vc.
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detail];
+        
+        //Setup button to close the detail VC (will call the method below.
+        UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(closeModal)];
+        [detail.navigationItem setRightBarButtonItem:done];
+        [self presentViewController:navController animated:YES completion:nil];
+    }
+     */
 }
 
 /*

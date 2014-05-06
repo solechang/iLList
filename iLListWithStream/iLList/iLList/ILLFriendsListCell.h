@@ -10,4 +10,9 @@
 
 @interface ILLFriendsListCell : DNSSwipeableCell
 
+//image to be taken from facebook pic
+@property (nonatomic, strong) UIImageView *exampleImageView;
+//optional label for cell
+@property (nonatomic, strong) UILabel *exampleLabel;
+
 @end
