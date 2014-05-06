@@ -109,6 +109,7 @@
 		B9C0588518FC5A6400866B8B /* ILLAddiLListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C0588418FC5A6400866B8B /* ILLAddiLListViewController.m */; };
 		B9C0588B18FC760F00866B8B /* ILLListOfIllistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C0588A18FC760F00866B8B /* ILLListOfIllistsViewController.m */; };
 		B9EF7B4D18C5298200420F45 /* ILLiLListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9EF7B4C18C5298200420F45 /* ILLiLListModel.m */; };
+		B9F99A4C191869C20093C044 /* ILLFriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F99A4B191869C20093C044 /* ILLFriendsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -253,6 +254,8 @@
 		B9C0588A18FC760F00866B8B /* ILLListOfIllistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLListOfIllistsViewController.m; sourceTree = "<group>"; };
 		B9EF7B4B18C5298200420F45 /* ILLiLListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLiLListModel.h; sourceTree = "<group>"; };
 		B9EF7B4C18C5298200420F45 /* ILLiLListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLiLListModel.m; sourceTree = "<group>"; };
+		B9F99A4A191869C20093C044 /* ILLFriendsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLFriendsTableViewController.h; sourceTree = "<group>"; };
+		B9F99A4B191869C20093C044 /* ILLFriendsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLFriendsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,10 +481,14 @@
 				B90341E818B558E20055AEAC /* ILLAppDelegate.m */,
 				B9C0588318FC5A6400866B8B /* ILLAddiLListViewController.h */,
 				B9C0588418FC5A6400866B8B /* ILLAddiLListViewController.m */,
+				B9F99A4A191869C20093C044 /* ILLFriendsTableViewController.h */,
+				B9F99A4B191869C20093C044 /* ILLFriendsTableViewController.m */,
 				B9C0588918FC760F00866B8B /* ILLListOfIllistsViewController.h */,
 				B9C0588A18FC760F00866B8B /* ILLListOfIllistsViewController.m */,
 				B95CBBC518C113C000A5AFF1 /* ILLLoginViewController.h */,
 				B95CBBC618C113C000A5AFF1 /* ILLLoginViewController.m */,
+				32E811BD190EE3D900C799B8 /* ILLnewTableViewCell.h */,
+				32E811BE190EE3D900C799B8 /* ILLnewTableViewCell.m */,
 				B9057AE418CD65F8005D0C45 /* ILLRegisterViewController.h */,
 				B9057AE518CD65F8005D0C45 /* ILLRegisterViewController.m */,
 				B99E110C190AFEB500D1676E /* ILLPlaylistSongsViewController.h */,
@@ -490,8 +497,6 @@
 				B92E59AB18F884AD0033F64A /* ILLUserViewController.m */,
 				56B734C718E0CEA800C48A90 /* ILLYoutubeViewController.h */,
 				56B734C818E0CEA800C48A90 /* ILLYoutubeViewController.m */,
-				32E811BD190EE3D900C799B8 /* ILLnewTableViewCell.h */,
-				32E811BE190EE3D900C799B8 /* ILLnewTableViewCell.m */,
 				B90341EA18B558E20055AEAC /* Main.storyboard */,
 				B90341F018B558E20055AEAC /* Images.xcassets */,
 				B90341DF18B558E20055AEAC /* Supporting Files */,
@@ -702,6 +707,7 @@
 				B95CBBC718C113C000A5AFF1 /* ILLLoginViewController.m in Sources */,
 				56B734A718E0CE2700C48A90 /* JSONKeyMapper.m in Sources */,
 				B99E110E190AFEB500D1676E /* ILLPlaylistSongsViewController.m in Sources */,
+				B9F99A4C191869C20093C044 /* ILLFriendsTableViewController.m in Sources */,
 				56B7349F18E0CE2700C48A90 /* JSONModel.m in Sources */,
 				56B734B018E0CE4D00C48A90 /* MediaThumbnail.m in Sources */,
 				B9057AE618CD65F8005D0C45 /* ILLRegisterViewController.m in Sources */,
