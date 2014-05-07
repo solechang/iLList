@@ -10,15 +10,28 @@
 
 @implementation ILLFriendsListCell
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
 
+
+- (void)commonInit
+{
+    [super commonInit];
+    
+    //Setup the pieces of this cell which will be reused
+    
+    //USE THIS CODE TO ADD AN IMAGE TO FRIEND's LIST CELL!!- SEB
+    
+   // CGFloat imageHeight = kExampleCellHeight - (kBetweenViewsMargin * 2);
+    //self.exampleImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kExampleCellLeftMargin, kBetweenViewsMargin, //imageHeight, imageHeight)];
+//    [self.myContentView addSubview:self.exampleImageView];
+    
+  //  CGFloat labelXOrigin = CGRectGetMaxX(self.exampleImageView.frame) + kBetweenViewsMargin;
+   // CGFloat labelWidth = CGRectGetWidth(self.frame) - labelXOrigin - kExampleCellRightMargin;
+   
+    
+    self.exampleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 25, 200, 50)];
+    self.exampleLabel.numberOfLines = 0;
+    [self.myContentView addSubview:self.exampleLabel];
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

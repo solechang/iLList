@@ -10,6 +10,13 @@
 #import <Firebase/Firebase.h>
 
 @interface ILLFriendsTableViewController () <DNSSwipeableCellDelegate, DNSSwipeableCellDataSource>
+
+@property (nonatomic, strong) NSMutableArray *cellsCurrentlyEditing;
+@property (nonatomic, strong) NSMutableArray *itemTitles;
+@property (nonatomic, strong) NSArray *backgroundColors;
+@property (nonatomic, strong) NSArray *textColors;
+@property (nonatomic, strong) NSArray *imageNames;
+
 @end
 
 @implementation ILLFriendsTableViewController
@@ -35,12 +42,17 @@ static NSString * const ILLFriendsListCellIdentifier = @"Cell";
     //Register the custom subclass
     [self.tableView registerClass:[ILLFriendsListCell class] forCellReuseIdentifier:ILLFriendsListCellIdentifier];
     
+    //Initialize the mutable array so you can add stuff to it.
+    _itemTitles = [NSMutableArray array];
+    self.cellsCurrentlyEditing = [NSMutableArray array];
+
+    
     userArray = [[NSMutableArray alloc]init];
     matchedFriends  = [[NSMutableArray alloc]init];
     
 
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    //self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -136,10 +148,10 @@ static NSString * const ILLFriendsListCellIdentifier = @"Cell";
     //NSString *textItem = self.itemTitles[indexPath.row];
     //NSString *imageName = self.imageNames[indexPath.row % self.imageNames.count];
     //UIImage *image = [UIImage imageNamed:imageName];
-   // cell.exampleLabel.text = textItem;
+    cell.exampleLabel.text = [matchedFriends[indexPath.row] name];
     //cell.exampleImageView.image = image;
     
-    cell.textLabel.text = [matchedFriends[indexPath.row] name];
+   // cell.textLabel.text = [matchedFriends[indexPath.row] name];
     //Set up the buttons
     cell.indexPath = indexPath;
     cell.dataSource = self;
@@ -148,9 +160,9 @@ static NSString * const ILLFriendsListCellIdentifier = @"Cell";
     [cell setNeedsUpdateConstraints];
     
     //Reopen the cell if it was already editing
-    //if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
-      //  [cell openCell:NO];
-    //}
+    if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
+       [cell openCell:NO];
+    }
     
 
     return cell;
@@ -237,11 +249,11 @@ static NSString * const ILLFriendsListCellIdentifier = @"Cell";
 }
 - (void)swipeableCellDidOpen:(DNSSwipeableCell *)cell
 {
-    //[self.cellsCurrentlyEditing addObject:cell.indexPath];
+    [self.cellsCurrentlyEditing addObject:cell.indexPath];
 }
 - (void)swipeableCellDidClose:(DNSSwipeableCell *)cell
 {
-    //[self.cellsCurrentlyEditing removeObject:cell.indexPath];
+    [self.cellsCurrentlyEditing removeObject:cell.indexPath];
 }
 
 - (void)showDetailForIndexPath:(NSIndexPath *)indexPath fromDelegateButtonAtIndex:(NSInteger)buttonIndex

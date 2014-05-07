@@ -2,8 +2,7 @@
 //  DNSSwipeableCell.m
 //  DNSSwipeableCell
 //
-//  Created by Ellen Shapiro on 12/29/13.
-//  Copyright (c) 2013 Designated Nerd Software. All rights reserved.
+//  Created by Sebastian Alberini on 05/06/14.
 //
 
 #import "DNSSwipeableCell.h"
