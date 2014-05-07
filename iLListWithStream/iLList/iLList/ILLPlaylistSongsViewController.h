@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Firebase/Firebase.h>
+#import "VideoModel.h"
 
 @interface ILLPlaylistSongsViewController : UITableViewController
 @property (nonatomic) NSString* myTitle;

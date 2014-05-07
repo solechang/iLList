@@ -11,6 +11,7 @@
 
 @interface ILLPlaylistSongsViewController ()
 
+@property (strong, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
@@ -65,10 +66,13 @@ NSMutableArray* songArray;
         
         // Right when a illist name is added, this is called
         // However the snapshot is empty
-        [songArray addObject:snapshot];
-        [self.tableView reloadData];
+        if(![songArray containsObject:snapshot]) {
+            [songArray addObject:snapshot];
+        }
         
+        [self.tableView reloadData];
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,7 +81,7 @@ NSMutableArray* songArray;
     // Dispose of any resources that can be recreated.
 }
 -(void) addButtonPressed{
-    NSLog(@"my storyboard = %@", self.storyboard);
+//    NSLog(@"my storyboard = %@", self.storyboard);
     [self performSegueWithIdentifier:@"addASong" sender:self];
 }
 
@@ -114,8 +118,40 @@ NSMutableArray* songArray;
     
     cell.textLabel.text = playlistSnapshot.name;
     
+    NSDictionary *songDictionary = playlistSnapshot.value;
+    NSString *voteCount = [NSString stringWithFormat:@"Likes: %@",songDictionary[@"votes"]];
+
+    cell.detailTextLabel.text = voteCount;
+    
     return cell;
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    FDataSnapshot *playlistSnapshot = songArray[indexPath.row];
+    NSDictionary *songDictionary = playlistSnapshot.value;
+//    NSLog(@"%@",songDictionary[@"link"]);
+    [self loadWebViewWithVideo:songDictionary[@"link"]];
+}
+// Gets the video link and plays the music in the background
+- (void)loadWebViewWithVideo:(NSString *)videoLink
+{
+    
+    self.webView.hidden=TRUE;
+    self.webView.backgroundColor = [UIColor redColor];
+    self.webView.allowsInlineMediaPlayback = YES;
+    self.webView.mediaPlaybackRequiresUserAction = NO;
+    [self.view addSubview:self.webView];
+    
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"youtube" ofType:@"html"];
+    NSString *template = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    NSMutableString *html = [NSMutableString stringWithString:template];
+    
+    
+    [html replaceOccurrencesOfString:@"[[[video_id]]]" withString:videoLink options:NSLiteralSearch range:NSMakeRange(0, html.length)];
+    [self.webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://showyou.com"]];
+}
+
 
 /*
 -(void) addSongToFirebasePlaylist: NSString *songName

@@ -136,7 +136,6 @@ NSMutableArray* playlistArray;
     static NSString *CellIdentifier = @"illistNames";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    
     if (cell == nil) {
         
         /*
@@ -173,9 +172,6 @@ NSMutableArray* playlistArray;
         [self performSegueWithIdentifier:@"viewPlaylistSegue" sender:self];
         //[self.navigationController pushViewController:second animated:YES];
     }
-    
- 
-    
 }
     
 /*

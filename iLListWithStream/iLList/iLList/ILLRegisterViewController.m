@@ -62,7 +62,7 @@
 #pragma Creating id
 - (IBAction)createidButton:(id)sender {
     
-    NSLog(@"Email: %@", self.emailTF.text);
+//    NSLog(@"Email: %@", self.emailTF.text);
     
     // Registering account
     [[ILLiLListModel sharedModel] createUserWithEmail:self.emailTF.text password:self.passwordTF.text andCompletionBlock:^(NSError* error, FAUser* user) {
@@ -76,7 +76,7 @@
 
                                 } else {
                                     // We created a new user account
-                                    NSLog(@"Account created!");
+//                                    NSLog(@"Account created!");
                                     
                                     [[[UIAlertView alloc] initWithTitle:@"Account Created!"
                                                                 message:@"You have successfully created an account! Please login."

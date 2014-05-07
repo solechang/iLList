@@ -83,7 +83,7 @@
                     
                     // Saving the userID for the program
                     [[ILLiLListModel sharedModel] setUserID:useridInLogin];
-                    NSLog(@"%@", [[ILLiLListModel sharedModel] userID]);
+//                    NSLog(@"%@", [[ILLiLListModel sharedModel] userID]);
                     
 
                     [self.navigationController popViewControllerAnimated:YES];
