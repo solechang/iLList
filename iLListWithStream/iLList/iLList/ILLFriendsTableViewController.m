@@ -148,7 +148,7 @@ static NSString * const ILLFriendsListCellIdentifier = @"Cell";
     //NSString *textItem = self.itemTitles[indexPath.row];
     //NSString *imageName = self.imageNames[indexPath.row % self.imageNames.count];
     //UIImage *image = [UIImage imageNamed:imageName];
-    cell.exampleLabel.text = [matchedFriends[indexPath.row] name];
+    cell.friendNameLabel.text = [matchedFriends[indexPath.row] name];
     //cell.exampleImageView.image = image;
     
    // cell.textLabel.text = [matchedFriends[indexPath.row] name];

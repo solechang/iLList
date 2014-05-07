@@ -9,13 +9,20 @@
 #import "ILLPlaylistSongsViewController.h"
 #import "ILLiLListModel.h"
 
-@interface ILLPlaylistSongsViewController ()
+@interface ILLPlaylistSongsViewController () <DNSSwipeableCellDelegate, DNSSwipeableCellDataSource>
 
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) NSMutableArray *cellsCurrentlyEditing;
+@property (nonatomic, strong) NSMutableArray *itemTitles;
+@property (nonatomic, strong) NSArray *backgroundColors;
+@property (nonatomic, strong) NSArray *textColors;
+@property (nonatomic, strong) NSArray *imageNames;
 
 @end
 
 NSMutableArray* songArray;
+static NSString * const ILLPlaylistCellIdentifier = @"Cell";
+
 @implementation ILLPlaylistSongsViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -30,6 +37,12 @@ NSMutableArray* songArray;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.tableView registerClass:[ILLPlaylistCell class] forCellReuseIdentifier:ILLPlaylistCellIdentifier];
+    
+    //Initialize the mutable array so you can add stuff to it.
+    _itemTitles = [NSMutableArray array];
+    self.cellsCurrentlyEditing = [NSMutableArray array];
+
     self.navigationItem.title = self.myTitle;
     //Create add button for the nav bar - by seb
 	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -101,27 +114,40 @@ NSMutableArray* songArray;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"songCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"newSongCell";
+   ILLPlaylistCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    if (cell == nil) {
+    
+   // if (cell == nil) {
         
         /*
          *   Actually create a new cell (with an identifier so that it can be dequeued).
          */
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+     //   cell = [[ILLPlaylistCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+       // cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-    }
+    //}
+
     FDataSnapshot *playlistSnapshot = songArray[indexPath.row];
     
-    cell.textLabel.text = playlistSnapshot.name;
+    cell.songNameLabel.text = playlistSnapshot.name;
     
     NSDictionary *songDictionary = playlistSnapshot.value;
-    NSString *voteCount = [NSString stringWithFormat:@"Likes: %@",songDictionary[@"votes"]];
-
-    cell.detailTextLabel.text = voteCount;
+    NSString *voteCount = [NSString stringWithFormat:@": %@",songDictionary[@"votes"]];
+   
+    //Set up the buttons
+    cell.indexPath = indexPath;
+    cell.dataSource = self;
+    cell.delegate = self;
+    
+    [cell setNeedsUpdateConstraints];
+    
+    //Reopen the cell if it was already editing
+    if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
+        [cell openCell:NO];
+    }
+    cell.likesCountLabel.text = voteCount;
     
     return cell;
 }
@@ -151,7 +177,112 @@ NSMutableArray* songArray;
     [html replaceOccurrencesOfString:@"[[[video_id]]]" withString:videoLink options:NSLiteralSearch range:NSMakeRange(0, html.length)];
     [self.webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://showyou.com"]];
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60.0f;
+}
+- (NSInteger)numberOfButtonsInSwipeableCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    //NOTE: change this to increase/decraese number of buttons you want when cell is dragged
+    return 2; //for like/dislike
+}
+- (NSString *)titleForButtonAtIndex:(NSInteger)index inCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (index) {
+        case 0:
+            return NSLocalizedString(@"Dislike", @"Dislike");
+            break;
+        case 1:
+            return NSLocalizedString(@"Like", @"Like");
+            break;
+        case 2:
+            return NSLocalizedString(@"Option 2", @"Option 2");
+            break;
+        default:
+            break;
+    }
+    
+    return nil;
+}
 
+- (void)swipeableCell:(DNSSwipeableCell *)cell didSelectButtonAtIndex:(NSInteger)index
+{
+    
+    if (index == 0) {
+        // [self.cellsCurrentlyEditing removeObject:cell.indexPath];
+        [self tableView:self.tableView commitEditingStyle:UITableViewCellEditingStyleDelete forRowAtIndexPath:cell.indexPath];
+    } else {
+        [self showDetailForIndexPath:cell.indexPath fromDelegateButtonAtIndex:index];
+    }
+}
+- (UIColor *)backgroundColorForButtonAtIndex:(NSInteger)index inCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (index) {
+        case 0:
+            return [UIColor redColor];
+            break;
+        default: {
+            return [UIColor colorWithRed:48/255.0f green:190/255.0f blue:5/255.0f alpha:1.0f];
+        }
+            break;
+    }
+}
+- (UIColor *)textColorForButtonAtIndex:(NSInteger)index inCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (index) {
+        case 0:
+            return [UIColor colorWithRed:0/255.0f green:1/255.0f blue:0/255.0f alpha:1.0f];
+            break;
+        default: {
+            return [UIColor colorWithRed:0/255.0f green:1/255.0f blue:0/255.0f alpha:1.0f];
+        }
+            break;
+    }
+}
+- (void)swipeableCellDidOpen:(DNSSwipeableCell *)cell
+{
+    [self.cellsCurrentlyEditing addObject:cell.indexPath];
+}
+- (void)swipeableCellDidClose:(DNSSwipeableCell *)cell
+{
+    [self.cellsCurrentlyEditing removeObject:cell.indexPath];
+}
+
+- (void)showDetailForIndexPath:(NSIndexPath *)indexPath fromDelegateButtonAtIndex:(NSInteger)buttonIndex
+{
+    /*
+     //Instantiate the DetailVC out of the storyboard.
+     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+     DetailViewController *detail = [storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
+     NSString *title = self.itemTitles[indexPath.row];
+     if (buttonIndex != -1) {
+     NSString *textForCellButton = [self titleForButtonAtIndex:buttonIndex inCellAtIndexPath:indexPath];
+     title = [NSString stringWithFormat:@"%@: %@", title, textForCellButton];
+     } else {
+     title = self.itemTitles[indexPath.row];
+     }
+     
+     detail.detailText = title;
+     NSString *imageName = self.imageNames[indexPath.row % self.imageNames.count];
+     detail.detailImage = [UIImage imageNamed:imageName];
+     
+     if (buttonIndex == -1) {
+     detail.title = @"Selected!";
+     [self.navigationController pushViewController:detail animated:YES];
+     } else {
+     //Present modally
+     detail.title = @"In the delegate!";
+     
+     //Setup nav controller to contain the detail vc.
+     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detail];
+     
+     //Setup button to close the detail VC (will call the method below.
+     UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(closeModal)];
+     [detail.navigationItem setRightBarButtonItem:done];
+     [self presentViewController:navController animated:YES completion:nil];
+     }
+     */
+}
 
 /*
 -(void) addSongToFirebasePlaylist: NSString *songName

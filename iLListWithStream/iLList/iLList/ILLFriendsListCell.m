@@ -28,9 +28,9 @@
    // CGFloat labelWidth = CGRectGetWidth(self.frame) - labelXOrigin - kExampleCellRightMargin;
    
     
-    self.exampleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 25, 200, 50)];
-    self.exampleLabel.numberOfLines = 0;
-    [self.myContentView addSubview:self.exampleLabel];
+    self.friendNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 25, 200, 50)];
+    self.friendNameLabel.numberOfLines = 0;
+    [self.myContentView addSubview:self.friendNameLabel];
 }
 /*
 // Only override drawRect: if you perform custom drawing.
