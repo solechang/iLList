@@ -134,7 +134,7 @@ static NSString * const ILLPlaylistCellIdentifier = @"Cell";
     cell.songNameLabel.text = playlistSnapshot.name;
     
     NSDictionary *songDictionary = playlistSnapshot.value;
-    NSString *voteCount = [NSString stringWithFormat:@": %@",songDictionary[@"votes"]];
+    NSString *voteCount = [NSString stringWithFormat:@" %@",songDictionary[@"votes"]];
    
     //Set up the buttons
     cell.indexPath = indexPath;
@@ -208,11 +208,30 @@ static NSString * const ILLPlaylistCellIdentifier = @"Cell";
 - (void)swipeableCell:(DNSSwipeableCell *)cell didSelectButtonAtIndex:(NSInteger)index
 {
     
+    FDataSnapshot *songSnapshot = songArray[cell.indexPath.row];
+    NSDictionary *songDictionary = songSnapshot.value;
+    NSString *pushRefString = [[NSString alloc] initWithFormat:@"https://illist.firebaseio.com/playlists/"];
+    pushRefString = [pushRefString stringByAppendingString:self.thisPlaylist.name];
+    pushRefString = [pushRefString stringByAppendingString:@"/songs/"];
+    pushRefString = [pushRefString stringByAppendingString:songSnapshot.name];
+    Firebase *songRef = [[Firebase alloc] initWithUrl:pushRefString];
+    NSLog(pushRefString);
+    //dislike
     if (index == 0) {
-        // [self.cellsCurrentlyEditing removeObject:cell.indexPath];
-        [self tableView:self.tableView commitEditingStyle:UITableViewCellEditingStyleDelete forRowAtIndexPath:cell.indexPath];
-    } else {
-        [self showDetailForIndexPath:cell.indexPath fromDelegateButtonAtIndex:index];
+        NSInteger currentVoteCount = [songDictionary[@"votes"] integerValue];
+        currentVoteCount--;
+        NSString *currentVoteCountString = [[NSString alloc] initWithFormat:@"%ld",(long)currentVoteCount];
+        [songRef updateChildValues:@{@"votes":currentVoteCountString}];
+    }
+    //like
+    else if (index == 1){
+        NSInteger currentVoteCount = [songDictionary[@"votes"] integerValue];
+        currentVoteCount++;
+        NSString *currentVoteCountString = [[NSString alloc] initWithFormat:@"%ld",(long)currentVoteCount];
+        [songRef updateChildValues:@{@"votes":currentVoteCountString}];
+        
+    }else {
+       // [self showDetailForIndexPath:cell.indexPath fromDelegateButtonAtIndex:index];
     }
 }
 - (UIColor *)backgroundColorForButtonAtIndex:(NSInteger)index inCellAtIndexPath:(NSIndexPath *)indexPath
