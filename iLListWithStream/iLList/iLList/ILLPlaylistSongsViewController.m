@@ -69,7 +69,7 @@ static NSString * const ILLPlaylistCellIdentifier = @"Cell";
     NSString *pushRefString = [[NSString alloc] initWithFormat:@"https://illist.firebaseio.com/playlists/"];
     pushRefString = [pushRefString stringByAppendingString:self.thisPlaylist.name];
     pushRefString = [pushRefString stringByAppendingString:@"/songs"];
-    NSLog(@"Song href: %@",pushRefString);
+//    NSLog(@"Song href: %@",pushRefString);
     
     Firebase* newPushSongRef = [[Firebase alloc] initWithUrl:pushRefString];
     
@@ -77,13 +77,16 @@ static NSString * const ILLPlaylistCellIdentifier = @"Cell";
     // Retrieving playlist names from firebase when an element is added
     [newPushSongRef observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         
-        // Right when a illist name is added, this is called
-        // However the snapshot is empty
+
         if(![songArray containsObject:snapshot]) {
             [songArray addObject:snapshot];
         }
-        
+        NSLog(@"2.)");
         [self.tableView reloadData];
+    }];
+    [newPushSongRef observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"3.)");
+       [self.tableView reloadData];
     }];
     
 }
@@ -114,6 +117,7 @@ static NSString * const ILLPlaylistCellIdentifier = @"Cell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     static NSString *CellIdentifier = @"newSongCell";
    ILLPlaylistCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
@@ -148,6 +152,7 @@ static NSString * const ILLPlaylistCellIdentifier = @"Cell";
         [cell openCell:NO];
     }
     cell.likesCountLabel.text = voteCount;
+    NSLog(@"4.)Votecount: %@", voteCount);
     
     return cell;
 }
@@ -215,13 +220,17 @@ static NSString * const ILLPlaylistCellIdentifier = @"Cell";
     pushRefString = [pushRefString stringByAppendingString:@"/songs/"];
     pushRefString = [pushRefString stringByAppendingString:songSnapshot.name];
     Firebase *songRef = [[Firebase alloc] initWithUrl:pushRefString];
-    NSLog(pushRefString);
+    
     //dislike
     if (index == 0) {
         NSInteger currentVoteCount = [songDictionary[@"votes"] integerValue];
+        NSLog(@"1.) %li", (long)currentVoteCount);
         currentVoteCount--;
+         NSLog(@"2.) %li", (long)currentVoteCount);
         NSString *currentVoteCountString = [[NSString alloc] initWithFormat:@"%ld",(long)currentVoteCount];
         [songRef updateChildValues:@{@"votes":currentVoteCountString}];
+        
+        
     }
     //like
     else if (index == 1){
@@ -233,6 +242,7 @@ static NSString * const ILLPlaylistCellIdentifier = @"Cell";
     }else {
        // [self showDetailForIndexPath:cell.indexPath fromDelegateButtonAtIndex:index];
     }
+
 }
 - (UIColor *)backgroundColorForButtonAtIndex:(NSInteger)index inCellAtIndexPath:(NSIndexPath *)indexPath
 {

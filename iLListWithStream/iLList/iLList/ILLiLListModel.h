@@ -13,6 +13,7 @@
 @interface ILLiLListModel : NSObject
 
 @property(weak,nonatomic) NSString* userID;
+@property(weak,nonatomic) NSString* currentlySelectedFriendID;
 @property(nonatomic) BOOL flagLogin;
 @property(weak,nonatomic) Firebase *currentPlaylist;
 

@@ -106,6 +106,7 @@
 		B903420218B558E20055AEAC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B903420018B558E20055AEAC /* InfoPlist.strings */; };
 		B903420418B558E20055AEAC /* iLListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B903420318B558E20055AEAC /* iLListTests.m */; };
 		B9057AE618CD65F8005D0C45 /* ILLRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9057AE518CD65F8005D0C45 /* ILLRegisterViewController.m */; };
+		B906AEBE191C68B70008C0D3 /* ILLSharePlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B906AEBD191C68B70008C0D3 /* ILLSharePlaylistViewController.m */; };
 		B92E59AC18F884AD0033F64A /* ILLUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B92E59AB18F884AD0033F64A /* ILLUserViewController.m */; };
 		B93D745018C10D4C00AB12BF /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B93D744F18C10D4C00AB12BF /* libicucore.dylib */; };
 		B93D745218C10D5800AB12BF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93D745118C10D5700AB12BF /* CFNetwork.framework */; };
@@ -257,6 +258,8 @@
 		B903420318B558E20055AEAC /* iLListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iLListTests.m; sourceTree = "<group>"; };
 		B9057AE418CD65F8005D0C45 /* ILLRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLRegisterViewController.h; sourceTree = "<group>"; };
 		B9057AE518CD65F8005D0C45 /* ILLRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLRegisterViewController.m; sourceTree = "<group>"; };
+		B906AEBC191C68B70008C0D3 /* ILLSharePlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLSharePlaylistViewController.h; sourceTree = "<group>"; };
+		B906AEBD191C68B70008C0D3 /* ILLSharePlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLSharePlaylistViewController.m; sourceTree = "<group>"; };
 		B92E59AA18F884AD0033F64A /* ILLUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLUserViewController.h; sourceTree = "<group>"; };
 		B92E59AB18F884AD0033F64A /* ILLUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLUserViewController.m; sourceTree = "<group>"; };
 		B93D744F18C10D4C00AB12BF /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -540,6 +543,8 @@
 				32E811BE190EE3D900C799B8 /* ILLnewTableViewCell.m */,
 				B9057AE418CD65F8005D0C45 /* ILLRegisterViewController.h */,
 				B9057AE518CD65F8005D0C45 /* ILLRegisterViewController.m */,
+				B906AEBC191C68B70008C0D3 /* ILLSharePlaylistViewController.h */,
+				B906AEBD191C68B70008C0D3 /* ILLSharePlaylistViewController.m */,
 				B92E59AA18F884AD0033F64A /* ILLUserViewController.h */,
 				B92E59AB18F884AD0033F64A /* ILLUserViewController.m */,
 				56B734C718E0CEA800C48A90 /* ILLYoutubeViewController.h */,
@@ -755,6 +760,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B906AEBE191C68B70008C0D3 /* ILLSharePlaylistViewController.m in Sources */,
 				56B734A818E0CE2700C48A90 /* JSONValueTransformer.m in Sources */,
 				328837B7191A00F6009E53DE /* ILLPlaylistCell.m in Sources */,
 				56B734B118E0CE4D00C48A90 /* VideoLink.m in Sources */,

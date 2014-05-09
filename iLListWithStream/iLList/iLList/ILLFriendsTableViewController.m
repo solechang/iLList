@@ -8,6 +8,7 @@
 
 #import "ILLFriendsTableViewController.h"
 #import <Firebase/Firebase.h>
+#import "ILLiLListModel.h"
 
 @interface ILLFriendsTableViewController () <DNSSwipeableCellDelegate, DNSSwipeableCellDataSource>
 
@@ -170,13 +171,15 @@ static NSString * const ILLFriendsListCellIdentifier = @"Cell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-    NSString *cellText = selectedCell.textLabel.text;
-    NSString *messageStr = [NSString stringWithFormat:@"whatever"];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alertName" message:messageStr delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+//    NSString *cellText = selectedCell.textLabel.text;
+//    NSString *messageStr = [NSString stringWithFormat:@"whatever"];
+//    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alertName" message:messageStr delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [alert show];
+    NSLog(@"%@",[matchedFriends[indexPath.row] id]);
+    [[ILLiLListModel sharedModel] setCurrentlySelectedFriendID:[matchedFriends[indexPath.row] id]];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    [self performSegueWithIdentifier:@"sharePlaylistSegue" sender:self];
     
 }
 
