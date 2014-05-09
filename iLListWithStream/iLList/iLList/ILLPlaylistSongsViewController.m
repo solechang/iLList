@@ -252,7 +252,7 @@ static NSString * const ILLPlaylistCellIdentifier = @"Cell";
 {
     switch (index) {
         case 0:
-            return [UIColor redColor];
+            return [UIColor colorWithRed:40/255.0f green:104/255.0f blue:0/255.0f alpha:1.0f];
             break;
         default: {
             return [UIColor colorWithRed:48/255.0f green:190/255.0f blue:5/255.0f alpha:1.0f];
