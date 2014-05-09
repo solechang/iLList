@@ -161,6 +161,18 @@ static NSString * const ILLFriendsListCellIdentifier = @"Cell";
    // cell.delegate = self;
     
     [cell setNeedsUpdateConstraints];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *btnImage = [UIImage imageNamed:@"illistShareButton.png"]; //use play button img
+    [button setImage:btnImage forState:UIControlStateNormal];
+    [button setTag:indexPath.row];
+	[button addTarget:self
+			   action:@selector(shareIllistFromButton:) //selector for button pressed
+	 forControlEvents:UIControlEventTouchDown];
+	button.frame = CGRectMake(230, 30, btnImage.size.width, btnImage.size.height); //button frame is equal to image size
+    
+	[cell addSubview:button]; //add first button to cell
+
     //cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundForTable.png"]];
     //Reopen the cell if it was already editing
     if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
@@ -169,6 +181,13 @@ static NSString * const ILLFriendsListCellIdentifier = @"Cell";
     
 
     return cell;
+}
+-(void)shareIllistFromButton: (UIButton *)button{
+     int row =button.tag;
+    [[ILLiLListModel sharedModel] setCurrentlySelectedFriendID:[matchedFriends[row] id]];
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self performSegueWithIdentifier:@"sharePlaylistSegue" sender:self];
+    
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -179,9 +198,9 @@ static NSString * const ILLFriendsListCellIdentifier = @"Cell";
 //    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alertName" message:messageStr delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 //    [alert show];
     NSLog(@"%@",[matchedFriends[indexPath.row] id]);
-    [[ILLiLListModel sharedModel] setCurrentlySelectedFriendID:[matchedFriends[indexPath.row] id]];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self performSegueWithIdentifier:@"sharePlaylistSegue" sender:self];
+  //  [[ILLiLListModel sharedModel] setCurrentlySelectedFriendID:[matchedFriends[indexPath.row] id]];
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+   // [self performSegueWithIdentifier:@"sharePlaylistSegue" sender:self];
     
 }
 
