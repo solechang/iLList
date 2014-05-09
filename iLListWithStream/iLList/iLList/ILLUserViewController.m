@@ -10,16 +10,25 @@
 #import "ILLiLListModel.h"
 
 @interface ILLUserViewController ()
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
 @implementation ILLUserViewController
-
+NSString *currentSong;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    currentSong = [[NSString alloc]init];
 	// Do any additional setup after loading the view.
+}
+
+- (void) viewDidAppear:(BOOL)animated{
+    if ( ([[ILLiLListModel sharedModel] currentlySelectedSongLink] != nil ) && (currentSong != [[ILLiLListModel sharedModel] currentlySelectedSongLink])){
+        currentSong = [[ILLiLListModel sharedModel] currentlySelectedSongLink];
+        [self loadWebViewWithVideo:currentSong];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -31,8 +40,24 @@
     [[ILLiLListModel sharedModel] setFlagLogin:YES];
     [[ILLiLListModel sharedModel] logout];
     [self.tabBarController setSelectedIndex:0];
-    
-    
 }
 
+// Gets the video link and plays the music in the background
+- (void)loadWebViewWithVideo:(NSString *)videoLink
+{
+    self.webView.hidden=FALSE;
+    self.webView.backgroundColor = [UIColor redColor];
+    self.webView.allowsInlineMediaPlayback = YES;
+    self.webView.mediaPlaybackRequiresUserAction = NO;
+    [self.view addSubview:self.webView];
+    
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"youtube" ofType:@"html"];
+    NSString *template = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    NSMutableString *html = [NSMutableString stringWithString:template];
+    
+    
+    [html replaceOccurrencesOfString:@"[[[video_id]]]" withString:videoLink options:NSLiteralSearch range:NSMakeRange(0, html.length)];
+    [self.webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://showyou.com"]];
+}
 @end

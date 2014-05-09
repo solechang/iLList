@@ -378,6 +378,7 @@
         <scene sceneID="4HB-lJ-UiP">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="dEA-1R-oxd" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="j90-uX-dw9"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ImE-OO-PhQ">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
@@ -389,14 +390,31 @@
                     <connections>
                         <segue destination="diS-0z-KIU" kind="relationship" relationship="viewControllers" id="gNr-cm-Gkq"/>
                         <segue destination="bjn-tt-9cg" kind="relationship" relationship="viewControllers" id="Jpc-id-stk"/>
-                        <segue destination="Leu-YS-8KF" kind="relationship" relationship="viewControllers" id="qsL-As-0IX"/>
+                        <segue destination="Ice-os-610" kind="relationship" relationship="viewControllers" id="BRe-80-lyX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8P8-0h-hbb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-590" y="67"/>
         </scene>
-        <!--User View Controller - You-->
+        <!--Navigation Controller - Playing-->
+        <scene sceneID="78B-Ga-IUn">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="Ice-os-610" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Playing" image="angry-32.png" id="xXb-Sp-Xzz"/>
+                    <navigationItem key="navigationItem" id="Nw3-Jc-vuE"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gfx-v5-nit">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Leu-YS-8KF" kind="relationship" relationship="rootViewController" id="HCB-Yx-Dae"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6nI-AC-NUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-46" y="821"/>
+        </scene>
+        <!--User View Controller - Now Playing-->
         <scene sceneID="BW5-6D-zYU">
             <objects>
                 <viewController id="Leu-YS-8KF" customClass="ILLUserViewController" sceneMemberID="viewController">
@@ -408,8 +426,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PYN-bA-146">
-                                <rect key="frame" x="128" y="135" width="49" height="30"/>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W2p-BM-fAT">
+                                <rect key="frame" x="0.0" y="65" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="You" image="angry-32.png" id="6r5-nf-g4H"/>
+                    <navigationItem key="navigationItem" title="Now Playing" id="e4s-Gi-pKO">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="ZKP-am-96Y">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PYN-bA-146">
+                                <rect key="frame" x="255" y="7" width="49" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Logout">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -418,14 +447,16 @@
                                     <action selector="logOutButton:" destination="Leu-YS-8KF" eventType="touchUpInside" id="lAC-rH-Hii"/>
                                 </connections>
                             </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="You" image="angry-32.png" id="6r5-nf-g4H"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="musicPlayerWebView" destination="W2p-BM-fAT" id="ozM-TT-brB"/>
+                        <outlet property="webView" destination="W2p-BM-fAT" id="2Bt-dP-8Xv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dK0-Rz-GXM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-46" y="761"/>
+            <point key="canvasLocation" x="451" y="821"/>
         </scene>
         <!--Playlist Songs View Controller-->
         <scene sceneID="NXX-17-5M7">
@@ -455,6 +486,7 @@
                     <connections>
                         <outlet property="webView" destination="997-eD-Pxy" id="mDa-7G-92y"/>
                         <segue destination="MsU-CO-2bj" kind="push" identifier="addASong" id="ZfR-Ff-A24"/>
+                        <segue destination="Leu-YS-8KF" kind="push" identifier="playSongSegue" id="qNM-mO-sjg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LtN-HT-Mvk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -464,7 +496,7 @@
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </webView>
             </objects>
-            <point key="canvasLocation" x="451" y="-2149"/>
+            <point key="canvasLocation" x="491" y="-1901"/>
         </scene>
         <!--Youtube View Controller-->
         <scene sceneID="qDs-2n-mho">
@@ -592,6 +624,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="rVc-Cb-Quy"/>
+        <segue reference="qNM-mO-sjg"/>
+        <segue reference="ZfR-Ff-A24"/>
     </inferredMetricsTieBreakers>
 </document>

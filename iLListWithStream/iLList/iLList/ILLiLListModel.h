@@ -14,6 +14,7 @@
 
 @property(weak,nonatomic) NSString* userID;
 @property(weak,nonatomic) NSString* currentlySelectedFriendID;
+@property(weak,nonatomic) NSString* currentlySelectedSongLink;
 @property(nonatomic) BOOL flagLogin;
 @property(weak,nonatomic) Firebase *currentPlaylist;
 

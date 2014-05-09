@@ -11,6 +11,7 @@
 #import "VideoModel.h"
 #import "ILLPlaylistCell.h"
 #import "ILLFriendsListCell.h"
+#import "ILLUserViewController.h"
 
 @interface ILLPlaylistSongsViewController : UITableViewController
 @property (nonatomic) NSString* myTitle;

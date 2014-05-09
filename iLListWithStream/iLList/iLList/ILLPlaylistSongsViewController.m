@@ -22,7 +22,6 @@
 
 NSMutableArray* songArray;
 static NSString * const ILLPlaylistCellIdentifier = @"Cell";
-
 @implementation ILLPlaylistSongsViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -81,11 +80,11 @@ static NSString * const ILLPlaylistCellIdentifier = @"Cell";
         if(![songArray containsObject:snapshot]) {
             [songArray addObject:snapshot];
         }
-        NSLog(@"2.)");
+      
         [self.tableView reloadData];
     }];
     [newPushSongRef observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"3.)");
+
        [self.tableView reloadData];
     }];
     
@@ -152,36 +151,41 @@ static NSString * const ILLPlaylistCellIdentifier = @"Cell";
         [cell openCell:NO];
     }
     cell.likesCountLabel.text = voteCount;
-    NSLog(@"4.)Votecount: %@", voteCount);
     
     return cell;
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FDataSnapshot *playlistSnapshot = songArray[indexPath.row];
     NSDictionary *songDictionary = playlistSnapshot.value;
+    [[ILLiLListModel sharedModel] setCurrentlySelectedSongLink:songDictionary[@"link"]];
+    
+    [self.tabBarController setSelectedIndex:2];
+    [self performSegueWithIdentifier:@"playSongSegue" sender:self];
+    [self.navigationController popViewControllerAnimated:YES];
 //    NSLog(@"%@",songDictionary[@"link"]);
-    [self loadWebViewWithVideo:songDictionary[@"link"]];
+
 }
-// Gets the video link and plays the music in the background
-- (void)loadWebViewWithVideo:(NSString *)videoLink
-{
-    
-    self.webView.hidden=TRUE;
-    self.webView.backgroundColor = [UIColor redColor];
-    self.webView.allowsInlineMediaPlayback = YES;
-    self.webView.mediaPlaybackRequiresUserAction = NO;
-    [self.view addSubview:self.webView];
-    
-    
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"youtube" ofType:@"html"];
-    NSString *template = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-    NSMutableString *html = [NSMutableString stringWithString:template];
-    
-    
-    [html replaceOccurrencesOfString:@"[[[video_id]]]" withString:videoLink options:NSLiteralSearch range:NSMakeRange(0, html.length)];
-    [self.webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://showyou.com"]];
-}
+//// Gets the video link and plays the music in the background
+//- (void)loadWebViewWithVideo:(NSString *)videoLink
+//{
+//    
+//    self.webView.hidden=TRUE;
+//    self.webView.backgroundColor = [UIColor redColor];
+//    self.webView.allowsInlineMediaPlayback = YES;
+//    self.webView.mediaPlaybackRequiresUserAction = NO;
+//    [self.view addSubview:self.webView];
+//    
+//    
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"youtube" ofType:@"html"];
+//    NSString *template = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+//    NSMutableString *html = [NSMutableString stringWithString:template];
+//    
+//    
+//    [html replaceOccurrencesOfString:@"[[[video_id]]]" withString:videoLink options:NSLiteralSearch range:NSMakeRange(0, html.length)];
+//    [self.webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://showyou.com"]];
+//}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 60.0f;

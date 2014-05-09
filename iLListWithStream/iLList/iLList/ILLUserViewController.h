@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ILLUserViewController : UIViewController
-
-
+@property (weak,nonatomic) NSString *songPlaying;
+@property (weak, nonatomic) IBOutlet UIWebView *musicPlayerWebView;
 @end
