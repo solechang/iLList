@@ -151,15 +151,11 @@ NSMutableDictionary *playlistDictionary;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-    NSString *cellText = selectedCell.textLabel.text;
+    
     NSString *thisPlaylist = [playlistArray[indexPath.row] name];
-    
-    
     NSString *pushRefString = [[NSString alloc] initWithFormat:@"https://illist.firebaseio.com/playlists/"];
     pushRefString = [pushRefString stringByAppendingString:thisPlaylist];
     pushRefString = [pushRefString stringByAppendingString:@"/playlistInfo"];
-    NSLog(pushRefString);
     Firebase* newPushSongRef = [[Firebase alloc] initWithUrl:pushRefString];
     [newPushSongRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         playlistDictionary = snapshot.value;
@@ -168,23 +164,21 @@ NSMutableDictionary *playlistDictionary;
         NSString *linkUserID = [[ILLiLListModel sharedModel] currentlySelectedFriendID];
         linkUsers = [linkUsers stringByAppendingString:linkUserID];
         linkUsers = [linkUsers stringByAppendingString:@"/illists/"];
-        NSLog(linkUsers);
         
         //create reference to user's illists table
         Firebase* userRef = [[Firebase alloc] initWithUrl:linkUsers];
         
         [[userRef childByAppendingPath:[playlistArray[indexPath.row] name]] setValue:playlistDictionary[@"name"]];
         
-    }];
-    
-    NSString *messageStr = [NSString stringWithFormat:@"Succesfully shared iLList!"];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alertName" message:messageStr delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-
-    
-    if (indexPath) {
+        NSString *messageStr = [NSString stringWithFormat:@"You have shared the iLList: %@",playlistDictionary[@"name"]];
         
-    }
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success!" message:messageStr delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [self.navigationController popViewControllerAnimated:YES];
+        
+
+        
+    }];
 }
 
 /*
