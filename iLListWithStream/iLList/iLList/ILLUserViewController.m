@@ -49,7 +49,7 @@ NSString *currentSong;
 - (void)loadWebViewWithVideo:(NSString *)videoLink
 {
     self.webView.hidden=FALSE;
-    self.webView.backgroundColor = [UIColor redColor];
+    self.webView.backgroundColor = [UIColor blackColor];
     self.webView.allowsInlineMediaPlayback = YES;
     self.webView.mediaPlaybackRequiresUserAction = NO;
     [self.view addSubview:self.webView];
