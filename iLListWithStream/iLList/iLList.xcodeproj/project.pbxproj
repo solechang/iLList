@@ -704,7 +704,7 @@
 				ORGANIZATIONNAME = iLList;
 				TargetAttributes = {
 					B90341D418B558E20055AEAC = {
-						DevelopmentTeam = C5PQQ672HA;
+						DevelopmentTeam = 7FX28RKSGV;
 					};
 					B90341F518B558E20055AEAC = {
 						TestTargetID = B90341D418B558E20055AEAC;
@@ -1012,6 +1012,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iLList/iLList-Prefix.pch";
 				INFOPLIST_FILE = "iLList/iLList-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/itp/Downloads/iLList-jake/iLList/Firebase.framework/Versions/A",
@@ -1045,6 +1046,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iLList/iLList-Prefix.pch";
 				INFOPLIST_FILE = "iLList/iLList-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/itp/Downloads/iLList-jake/iLList/Firebase.framework/Versions/A",
