@@ -26,7 +26,7 @@
     // CGFloat labelWidth = CGRectGetWidth(self.frame) - labelXOrigin - kExampleCellRightMargin;
     
     
-    self.songNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 5, 230, 50)];
+    self.songNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 5, 225, 50)];
     self.songNameLabel.numberOfLines = 0;
     [self.myContentView addSubview:self.songNameLabel];
     

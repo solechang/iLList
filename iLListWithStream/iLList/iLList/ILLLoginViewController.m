@@ -29,6 +29,11 @@
 {
     [super viewDidLoad];
 	self.navigationItem.hidesBackButton = YES; // hide navigationitem (back button)
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bannerGradient.png"] forBarMetrics:UIBarMetricsDefault];
+    UIImage* logoImage = [UIImage imageNamed:@"illistLogo.png"];
+    // UIImage* background = [UIImage imageNamed:@"backgroundForTable.png"];
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:logoImage];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundForTable.png"]]];
 
     // adding in singleton
     

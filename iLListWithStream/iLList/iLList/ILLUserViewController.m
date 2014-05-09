@@ -21,6 +21,9 @@ NSString *currentSong;
 {
     [super viewDidLoad];
     currentSong = [[NSString alloc]init];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bannerGradient.png"] forBarMetrics:UIBarMetricsDefault];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundForTable.png"]]];
+
 	// Do any additional setup after loading the view.
 }
 

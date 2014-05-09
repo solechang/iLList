@@ -35,7 +35,12 @@ NSMutableArray* playlistArray;
     [super viewDidLoad];
     
     [[ILLiLListModel sharedModel] setFlagLogin:NO];
-    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bannerGradient.png"] forBarMetrics:UIBarMetricsDefault];
+    UIImage* logoImage = [UIImage imageNamed:@"illistLogo.png"];
+   // UIImage* background = [UIImage imageNamed:@"backgroundForTable.png"];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:logoImage];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundForTable.png"]]];
+    [self.tableView setSeparatorColor: [UIColor colorWithRed:16/255.0f green:211/255.0f blue:62/255.0f alpha:1.0f]];
     // Although the user illists is listed, it happens to be slow because of race conditions
     // Way around is to store the user's playlists in core data, so that it will displayed quickly
     // rather than waiting for the user's illists to pop from firebase
@@ -143,7 +148,9 @@ NSMutableArray* playlistArray;
     FDataSnapshot *playlistSnapshot = playlistArray[indexPath.row];
 
     cell.textLabel.text = playlistSnapshot.value;
-    
+    cell.backgroundColor = [UIColor clearColor];
+    //cell.backgroundView = [[UIView new] autorelease];
+    //cell.selectedBackgroundView = [[UIView new] autorelease];
     return cell;
 }
 

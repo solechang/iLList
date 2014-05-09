@@ -47,7 +47,9 @@ static NSString * const ILLFriendsListCellIdentifier = @"Cell";
     _itemTitles = [NSMutableArray array];
     self.cellsCurrentlyEditing = [NSMutableArray array];
 
-    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bannerGradient.png"] forBarMetrics:UIBarMetricsDefault];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundForTable.png"]]];
+    [self.tableView setSeparatorColor: [UIColor colorWithRed:16/255.0f green:211/255.0f blue:62/255.0f alpha:1.0f]];
     userArray = [[NSMutableArray alloc]init];
     matchedFriends  = [[NSMutableArray alloc]init];
     
@@ -143,26 +145,26 @@ static NSString * const ILLFriendsListCellIdentifier = @"Cell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"friendCell";
-    ILLFriendsListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     //NSString *textItem = self.itemTitles[indexPath.row];
     //NSString *imageName = self.imageNames[indexPath.row % self.imageNames.count];
     //UIImage *image = [UIImage imageNamed:imageName];
-    cell.friendNameLabel.text = [matchedFriends[indexPath.row] name];
+   // cell.friendNameLabel.text = [matchedFriends[indexPath.row] name];
     //cell.exampleImageView.image = image;
-    
-   // cell.textLabel.text = [matchedFriends[indexPath.row] name];
+     cell.backgroundColor = [UIColor clearColor];
+    cell.textLabel.text = [matchedFriends[indexPath.row] name];
     //Set up the buttons
-    cell.indexPath = indexPath;
-    cell.dataSource = self;
-    cell.delegate = self;
+   // cell.indexPath = indexPath;
+  //  cell.dataSource = self;
+   // cell.delegate = self;
     
     [cell setNeedsUpdateConstraints];
-    
+    //cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundForTable.png"]];
     //Reopen the cell if it was already editing
     if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
-       [cell openCell:NO];
+       //[cell openCell:NO];
     }
     
 

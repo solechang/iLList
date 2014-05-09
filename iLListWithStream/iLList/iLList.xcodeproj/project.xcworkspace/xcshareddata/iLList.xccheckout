@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>C52046E2-8F21-4FA6-B830-BE5A449C392C</string>
+	<string>FA817086-2806-41C5-BC59-40A03C2C8ED5</string>
 	<key>IDESourceControlProjectName</key>
 	<string>iLList</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,11 +14,11 @@
 		<string>https://github.com/wisupreme/iLList.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>iLList/iLList.xcodeproj/project.xcworkspace</string>
+	<string>iLListWithStream/iLList/iLList.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>749150F6-CF1B-48BF-AA4C-BE2AE8078537</key>
-		<string>../../..</string>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/wisupreme/iLList.git</string>
