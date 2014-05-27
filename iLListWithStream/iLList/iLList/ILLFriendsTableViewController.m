@@ -87,29 +87,24 @@ static NSString * const ILLFriendsListCellIdentifier = @"Cell";
                                                   if (error) {
                                                       NSLog(@"1.) %@", error);
                                                   }
-                                                  
-                                                  
-                                                  
+
                                                   friends = [result objectForKey:@"data"];
-                                                  
                                                   
                                                   NSString *pushRefString = [[NSString alloc] initWithFormat:@"https://illist.firebaseio.com/users"];
                                                   
                                                   Firebase* newPushSongRef = [[Firebase alloc] initWithUrl:pushRefString];
                                                   
-                                                  
                                                   // Retrieving playlist names from firebase when an element is added
                                                   [newPushSongRef observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
-                                                      
-                                                      // Right when a illist name is added, this is called
-                                                      // However the snapshot is empty
                                                       [userArray addObject:snapshot];
                                                       
                                                       for (NSObject *friend in friends){
                                                           if ([[friend valueForKey:@"id"] isEqual: snapshot.name]){
                                                               // Friends that do have iLList are added into matchedFriends array
                                                               [matchedFriends addObject:friend];
+                                                              
                                                               [self.tableView reloadData];
+                                                              
                                                           }
                                                       }
                                                   }];
@@ -169,7 +164,7 @@ static NSString * const ILLFriendsListCellIdentifier = @"Cell";
 	[button addTarget:self
 			   action:@selector(shareIllistFromButton:) //selector for button pressed
 	 forControlEvents:UIControlEventTouchDown];
-	button.frame = CGRectMake(230, 30, btnImage.size.width, btnImage.size.height); //button frame is equal to image size
+	button.frame = CGRectMake(230, 5, btnImage.size.width, btnImage.size.height); //button frame is equal to image size
     
 	[cell addSubview:button]; //add first button to cell
 
@@ -197,17 +192,17 @@ static NSString * const ILLFriendsListCellIdentifier = @"Cell";
 //    
 //    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alertName" message:messageStr delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 //    [alert show];
-    NSLog(@"%@",[matchedFriends[indexPath.row] id]);
+//    NSLog(@"%@",[matchedFriends[indexPath.row] id]);
   //  [[ILLiLListModel sharedModel] setCurrentlySelectedFriendID:[matchedFriends[indexPath.row] id]];
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
    // [self performSegueWithIdentifier:@"sharePlaylistSegue" sender:self];
     
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 100.0f;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 100.0f;
+//}
 - (NSInteger)numberOfButtonsInSwipeableCellAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row % 2 == 0) {

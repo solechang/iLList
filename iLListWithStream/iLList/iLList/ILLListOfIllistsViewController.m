@@ -41,6 +41,8 @@ NSMutableArray* playlistArray;
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:logoImage];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundForTable.png"]]];
     [self.tableView setSeparatorColor: [UIColor colorWithRed:16/255.0f green:211/255.0f blue:62/255.0f alpha:1.0f]];
+    
+    
     // Although the user illists is listed, it happens to be slow because of race conditions
     // Way around is to store the user's playlists in core data, so that it will displayed quickly
     // rather than waiting for the user's illists to pop from firebase
